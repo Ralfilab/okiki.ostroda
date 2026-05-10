@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#ded0bd"/>
+  <circle cx="610" cy="385" r="120" fill="#f4efe6" stroke="#1d1b18" stroke-width="8"/>
+  <path d="M610 180c-90 0-163 73-163 163 0 122 163 277 163 277s163-155 163-277c0-90-73-163-163-163zm0 224a61 61 0 1 1 0-122 61 61 0 0 1 0 122z" fill="#1d1b18"/>
+  <text x="600" y="700" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#1d1b18">Mapa dojazdu - Okiki Ostroda</text>
+</svg>

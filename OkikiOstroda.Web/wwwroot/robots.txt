@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://okikiostroda.pl/sitemap.xml

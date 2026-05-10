@@ -1,0 +1,102 @@
+﻿@{
+    var culture = Context.Request.RouteValues["culture"]?.ToString() ?? "pl";
+    var prefix = culture == "en" ? "/en" : "";
+}
+<!DOCTYPE html>
+<html lang="@culture">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@ViewData["Description"]" />
+    <meta property="og:title" content="@ViewData["Title"] - Okiki Ostroda" />
+    <meta property="og:description" content="Kameralny domek wypoczynkowy w Boguszewie koło Ostródy dla maksymalnie 4 osób." />
+    <title>@ViewData["Title"] - Okiki Ostroda</title>
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "LodgingBusiness",
+      "name": "Okiki Ostroda",
+      "url": "https://okikiostroda.pl",
+      "telephone": "+48730249084",
+      "address": {
+        "@@type": "PostalAddress",
+        "addressLocality": "Boguszewo",
+        "postalCode": "14-140",
+        "addressCountry": "PL"
+      }
+    }
+    </script>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-cream fixed-top border-bottom">
+            <div class="container">
+                <a class="navbar-brand brand" href="@prefix/">Okiki Ostroda</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@prefix/">Dom</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@prefix/Home/Property">Obiekt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@prefix/Home/Gallery">Galeria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@prefix/Home/Location">Okolica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@prefix/Home/Contact">Kontakt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-dark rounded-pill px-4" href="@prefix/Reservation">Zarezerwuj</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link small" href="/">PL</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link small" href="/en/">EN</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h2 class="h4">Okiki Ostroda</h2>
+                    <p>Boguszewo, 14-140 • domek dla 4 osób</p>
+                </div>
+                <div class="col-md-3">
+                    <p class="mb-1">Telefon</p>
+                    <a href="tel:+48730249084">+48 730 249 084</a>
+                </div>
+                <div class="col-md-3">
+                    <p class="mb-1">Rezerwacje</p>
+                    <a href="@prefix/Reservation">Sprawdź dostępność</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

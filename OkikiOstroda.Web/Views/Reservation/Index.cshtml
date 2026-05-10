@@ -1,0 +1,54 @@
+@model OkikiOstroda.Web.Models.ReservationRequest
+@using OkikiOstroda.Web.Models
+@{
+    ViewData["Title"] = "Cennik i rezerwacja";
+    ViewData["Description"] = "Sprawdź dostępność domku Okiki Ostroda i zarezerwuj pobyt przelewem bankowym.";
+    var reservations = (IEnumerable<Reservation>)(ViewBag.Reservations ?? Enumerable.Empty<Reservation>());
+}
+
+<section class="page-hero compact">
+    <div class="container">
+        <p class="eyebrow">Cennik / rezerwacja</p>
+        <h1>Sprawdź termin i zarezerwuj pobyt</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="price-grid mb-5">
+            <div><span>Sezon wysoki</span><strong>500 zł / doba</strong><small>minimum 2 noce</small></div>
+            <div><span>Sezon niski</span><strong>400 zł / doba</strong><small>minimum 2 noce</small></div>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <h2>Dostępne terminy</h2>
+                <div class="availability-list">
+                    @foreach (var reservation in reservations)
+                    {
+                        <div class="booked-row"><strong>@reservation.StartDate.ToString("yyyy-MM-dd") – @reservation.EndDate.ToString("yyyy-MM-dd")</strong><span>@reservation.Status</span></div>
+                    }
+                    @if (!reservations.Any())
+                    {
+                        <p>Brak zablokowanych terminów. Kalendarz jest wolny.</p>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <form asp-action="Index" method="post" class="booking-form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row g-3">
+                        <div class="col-sm-6"><label asp-for="StartDate" class="form-label">Przyjazd</label><input asp-for="StartDate" type="date" class="form-control" /></div>
+                        <div class="col-sm-6"><label asp-for="EndDate" class="form-label">Wyjazd</label><input asp-for="EndDate" type="date" class="form-control" /></div>
+                        <div class="col-12"><label asp-for="GuestName" class="form-label">Imię i nazwisko</label><input asp-for="GuestName" class="form-control" /></div>
+                        <div class="col-sm-6"><label asp-for="GuestEmail" class="form-label">Email</label><input asp-for="GuestEmail" class="form-control" /></div>
+                        <div class="col-sm-6"><label asp-for="GuestPhone" class="form-label">Telefon</label><input asp-for="GuestPhone" class="form-control" /></div>
+                        <div class="col-12"><label asp-for="Guests" class="form-label">Liczba gości</label><input asp-for="Guests" type="number" min="1" max="4" class="form-control" /></div>
+                        <div class="col-12"><label asp-for="Notes" class="form-label">Wiadomość</label><textarea asp-for="Notes" class="form-control" rows="4"></textarea></div>
+                    </div>
+                    <button class="btn btn-dark btn-lg rounded-pill px-5 mt-4" type="submit">Wyślij rezerwację</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

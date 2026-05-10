@@ -1,0 +1,53 @@
+@model IEnumerable<OkikiOstroda.Web.Models.Reservation>
+@using OkikiOstroda.Web.Models
+@{
+    ViewData["Title"] = "Administracja";
+}
+
+<section class="section top-offset">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Panel admina</h1>
+            <form asp-action="Logout" method="post"><button class="btn btn-outline-dark" type="submit">Wyloguj</button></form>
+        </div>
+
+        <form asp-action="Block" method="post" class="booking-form mb-5">
+            <h2>Zablokuj termin</h2>
+            <div class="row g-3">
+                <div class="col-md-5"><label class="form-label">Od</label><input name="startDate" type="date" class="form-control" required /></div>
+                <div class="col-md-5"><label class="form-label">Do</label><input name="endDate" type="date" class="form-control" required /></div>
+                <div class="col-md-2 d-flex align-items-end"><button class="btn btn-dark w-100" type="submit">Dodaj</button></div>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead><tr><th>ID</th><th>Gość</th><th>Termin</th><th>Status</th><th>Kwota</th><th>Akcja</th></tr></thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.GuestName<br /><small>@item.GuestEmail @item.GuestPhone</small></td>
+                        <td>@item.StartDate.ToString("yyyy-MM-dd") – @item.EndDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Status</td>
+                        <td>@item.TotalPrice.ToString("0.00")</td>
+                        <td>
+                            <form asp-action="SetStatus" method="post" class="d-flex gap-2">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <select name="status" class="form-select form-select-sm">
+                                    @foreach (var status in Enum.GetValues<ReservationStatus>())
+                                    {
+                                        <option value="@status" selected="@(item.Status == status)">@status</option>
+                                    }
+                                </select>
+                                <button class="btn btn-sm btn-outline-dark" type="submit">Zapisz</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

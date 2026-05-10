@@ -1,0 +1,25 @@
+@model OkikiOstroda.Web.Models.Reservation
+@{
+    ViewData["Title"] = "Potwierdzenie rezerwacji";
+}
+
+<section class="page-hero compact">
+    <div class="container">
+        <p class="eyebrow">Rezerwacja #@Model.Id</p>
+        <h1>Dziękujemy za zgłoszenie</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container narrow">
+        <div class="contact-card">
+            <p>Termin: <strong>@Model.StartDate.ToString("yyyy-MM-dd") – @Model.EndDate.ToString("yyyy-MM-dd")</strong></p>
+            <p>Kwota: <strong>@Model.TotalPrice.ToString("0.00") PLN</strong></p>
+            <hr />
+            <h2>Dane do przelewu</h2>
+            <p>Numer konta: <strong>52 1020 1127 0000 1602 0391 3597</strong></p>
+            <p>Tytuł przelewu: <strong>Rezerwacja @Model.Id - @Model.GuestName</strong></p>
+            <p>Wysłaliśmy potwierdzenie na podany adres email, jeśli konfiguracja SMTP jest uzupełniona.</p>
+        </div>
+    </div>
+</section>
