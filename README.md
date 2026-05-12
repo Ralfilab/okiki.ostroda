@@ -82,7 +82,7 @@ Update this value for your MySQL server:
 
 ```json
 "ConnectionStrings": {
-  "OkikiConnection": "server=localhost;port=3306;database=okiki_ostroda;user=okiki_user;password=change-me"
+  "OkikiConnection": "server=localhost;port=3306;database=database_name;user=okiki_database_user;password=change-me"
 }
 ```
 
@@ -139,9 +139,7 @@ Pricing is configured in `appsettings.json`:
 
 Current rules:
 
-- High season: June, July, August
-- High season price: 500 PLN/day
-- Low season price: 400 PLN/day
+- Price: 500 PLN/day
 - Minimum stay: 2 nights
 
 ## Database setup
@@ -318,7 +316,7 @@ OkikiOstroda.Web/wwwroot/sitemap.xml
 They currently point to:
 
 ```text
-https://okikiostroda.pl
+https://okiki.pl
 ```
 
 ## Deployment checklist

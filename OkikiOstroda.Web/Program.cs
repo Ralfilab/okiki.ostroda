@@ -25,10 +25,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 builder.Services.Configure<PricingOptions>(builder.Configuration.GetSection("Pricing"));
 builder.Services.Configure<SmtpOptions>(builder.Configuration.GetSection("Smtp"));
-builder.Services.AddOptions<AdminOptions>()
-    .Bind(builder.Configuration.GetSection("Admin"))
-    .Validate(options => !string.IsNullOrWhiteSpace(options.UserName), "Admin:UserName is required.")
-    .Validate(options => !string.IsNullOrWhiteSpace(options.Password), "Admin:Password is required.")
+builder.Services.AddOptions<OkikiAdminOptions>()
+    .Bind(builder.Configuration.GetSection("OkikiAdmin"))
+    .Validate(options => !string.IsNullOrWhiteSpace(options.UserName), "OkikiAdmin:UserName is required.")
+    .Validate(options => !string.IsNullOrWhiteSpace(options.Password), "OkikiAdmin:Password is required.")
     .ValidateOnStart();
 builder.Services.AddScoped<PricingService>();
 builder.Services.AddScoped<EmailService>();

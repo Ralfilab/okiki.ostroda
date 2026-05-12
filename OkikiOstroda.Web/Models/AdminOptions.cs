@@ -1,6 +1,6 @@
 namespace OkikiOstroda.Web.Models;
 
-public class AdminOptions
+public class OkikiAdminOptions
 {
     public string UserName { get; set; } = string.Empty;
 

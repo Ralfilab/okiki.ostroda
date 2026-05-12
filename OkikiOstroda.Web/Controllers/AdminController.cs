@@ -11,7 +11,7 @@ using OkikiOstroda.Web.Services;
 
 namespace OkikiOstroda.Web.Controllers;
 
-public class AdminController(ApplicationDbContext db, IOptions<AdminOptions> adminOptions, PricingService pricingService) : Controller
+public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions> adminOptions, PricingService pricingService) : Controller
 {
     [HttpGet]
     public IActionResult Login()
@@ -56,7 +56,7 @@ public class AdminController(ApplicationDbContext db, IOptions<AdminOptions> adm
         db.Reservations.Add(new Reservation
         {
             GuestName = "Admin",
-            GuestEmail = "admin@okikiostroda.pl",
+            GuestEmail = "ralfilab@hotmail.co.uk",
             Guests = 1,
             StartDate = startDate,
             EndDate = endDate,
