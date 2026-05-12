@@ -15,7 +15,12 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
             .Where(x => x.Status != ReservationStatus.Cancelled)
             .OrderBy(x => x.StartDate)
             .ToListAsync();
-        return View(new ReservationRequest());
+        var today = DateOnly.FromDateTime(DateTime.Today);
+        return View(new ReservationRequest
+        {
+            StartDate = today.AddDays(2),
+            EndDate = today.AddDays(9)
+        });
     }
 
     [HttpPost]
