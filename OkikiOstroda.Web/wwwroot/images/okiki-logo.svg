@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 210" role="img" aria-labelledby="title desc">
+  <title id="title">Okiki - Your Happy Hideaway logo</title>
+  <desc id="desc">A friendly cabin with a smiling sun, pine trees, and rounded lowercase Okiki lettering on a transparent background.</desc>
+  <g fill="none" stroke="#2E5E4E" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M74 112c20-33 55-52 92-51 38 1 72 22 90 57" stroke-width="12" opacity=".18"/>
+    <circle cx="166" cy="62" r="33" fill="#F6C945" stroke-width="7"/>
+    <path d="M153 64c4 8 21 8 26 0" stroke-width="5"/>
+    <path d="M147 50h.5M185 50h.5" stroke-width="8"/>
+    <path d="M104 106l62-48 65 50" stroke-width="13"/>
+    <path d="M122 107v54h88v-54" fill="#F2E9D8" stroke-width="8"/>
+    <path d="M151 160v-31c0-10 8-18 18-18s18 8 18 18v31" fill="#fffaf2" stroke-width="7"/>
+    <path d="M95 159h145" stroke-width="8"/>
+    <path d="M72 88l-22 31h44L64 82 36 126h33l-24 32h54" fill="#2E5E4E" stroke-width="6"/>
+    <path d="M258 89l-23 31h46l-31-39-29 46h34l-24 32h56" fill="#2E5E4E" stroke-width="6"/>
+    <path d="M56 174c44 17 150 17 211 0" stroke="#4FA3D1" stroke-width="7" opacity=".7"/>
+  </g>
+  <g fill="#2E5E4E" font-family="Nunito, Quicksand, Poppins, Arial Rounded MT Bold, Arial, sans-serif" font-size="78" font-weight="800">
+    <text x="322" y="126">o</text>
+    <text x="369" y="123">k</text>
+    <text x="416" y="128">i</text>
+    <text x="447" y="124">k</text>
+    <text x="496" y="127">i</text>
+  </g>
+  <circle cx="436" cy="51" r="8" fill="#F6C945"/>
+  <path d="M436 35v-8M436 75v-8M420 51h-8M460 51h-8M425 40l-6-6M453 68l-6-6M447 40l6-6M419 68l6-6" stroke="#F6C945" stroke-width="4" stroke-linecap="round"/>
+  <text x="325" y="162" fill="#6f685f" font-family="Nunito, Quicksand, Poppins, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">your happy hideaway</text>
+</svg>

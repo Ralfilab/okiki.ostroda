@@ -11,6 +11,8 @@
     <meta property="og:title" content="@ViewData["Title"] - Okiki Ostroda" />
     <meta property="og:description" content="Kameralny domek wypoczynkowy w Boguszewie koło Ostródy dla maksymalnie 4 osób." />
     <title>@ViewData["Title"] - Okiki Ostroda</title>
+    <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
+    <link rel="alternate icon" href="~/favicon.ico" />
     <script type="application/ld+json">
     {
       "@@context": "https://schema.org",
@@ -34,7 +36,9 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-cream fixed-top border-bottom">
             <div class="container">
-                <a class="navbar-brand brand" href="@prefix/">Okiki Ostroda</a>
+                <a class="navbar-brand brand" href="@prefix/" aria-label="Okiki Ostroda">
+                    <img src="~/images/okiki-logo.svg" alt="Okiki - Your Happy Hideaway" />
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -80,7 +84,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-6">
-                    <h2 class="h4">Okiki Ostroda</h2>
+                    <img class="footer-logo" src="~/images/okiki-logo.svg" alt="Okiki - Your Happy Hideaway" />
                     <p>Boguszewo, 14-140 • domek dla 4 osób</p>
                 </div>
                 <div class="col-md-3">
