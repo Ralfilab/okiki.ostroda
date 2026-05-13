@@ -7,4 +7,8 @@ public class PricingOptions
     public decimal LowSeasonDailyRate { get; set; } = 400;
 
     public int MinimumNights { get; set; } = 2;
+
+    public decimal DiscountedDailyRate { get; set; } = 400;
+
+    public int DiscountStartsAfterNights { get; set; } = 2;
 }

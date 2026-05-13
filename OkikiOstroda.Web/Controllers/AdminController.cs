@@ -57,6 +57,8 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
         {
             GuestName = "Admin",
             GuestEmail = "ralfilab@hotmail.co.uk",
+            GuestPhone = "Admin",
+            GuestAddress = "Admin",
             Guests = 1,
             StartDate = startDate,
             EndDate = endDate,

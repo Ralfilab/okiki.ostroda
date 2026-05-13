@@ -5,4 +5,11 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="BookNow" xml:space="preserve"><value>Zarezerwuj</value></data>
+  <data name="ValidationDateRangeRequired" xml:space="preserve"><value>Wybierz datę przyjazdu i wyjazdu.</value></data>
+  <data name="ValidationDateUnavailable" xml:space="preserve"><value>Wybrany termin jest niedostępny.</value></data>
+  <data name="ValidationEmail" xml:space="preserve"><value>Podaj prawidłowy adres email.</value></data>
+  <data name="ValidationGuestsRange" xml:space="preserve"><value>Liczba gości musi być od 1 do 4.</value></data>
+  <data name="ValidationMinimumStay" xml:space="preserve"><value>Minimalny pobyt to 2 noce.</value></data>
+  <data name="ValidationPhone" xml:space="preserve"><value>Podaj prawidłowy numer telefonu.</value></data>
+  <data name="ValidationRequired" xml:space="preserve"><value>To pole jest wymagane.</value></data>
 </root>

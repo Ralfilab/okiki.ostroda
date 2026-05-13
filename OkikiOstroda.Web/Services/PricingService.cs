@@ -20,9 +20,12 @@ public class PricingService(IOptions<PricingOptions> options)
     public decimal CalculateTotal(DateOnly startDate, DateOnly endDate)
     {
         var total = 0m;
-        for (var date = startDate; date < endDate; date = date.AddDays(1))
+        var nightNumber = 1;
+        for (var date = startDate; date < endDate; date = date.AddDays(1), nightNumber++)
         {
-            total += IsHighSeason(date) ? _options.HighSeasonDailyRate : _options.LowSeasonDailyRate;
+            total += nightNumber > _options.DiscountStartsAfterNights
+                ? _options.DiscountedDailyRate
+                : IsHighSeason(date) ? _options.HighSeasonDailyRate : _options.LowSeasonDailyRate;
         }
 
         return total;

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using OkikiOstroda.Web.Resources;
 
 namespace OkikiOstroda.Web.Models;
 
@@ -14,20 +15,26 @@ public class Reservation
 {
     public int Id { get; set; }
 
-    [Required]
+    [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]
     [StringLength(160)]
     public string GuestName { get; set; } = string.Empty;
 
-    [Required]
-    [EmailAddress]
+    [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]
+    [EmailAddress(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationEmail")]
     [StringLength(180)]
     public string GuestEmail { get; set; } = string.Empty;
 
+    [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]
+    [Phone(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationPhone")]
     [StringLength(40)]
-    public string? GuestPhone { get; set; }
+    public string GuestPhone { get; set; } = string.Empty;
 
-    [Range(1, 4)]
+    [Range(1, 4, ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationGuestsRange")]
     public int Guests { get; set; } = 2;
+
+    [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]
+    [StringLength(300)]
+    public string GuestAddress { get; set; } = string.Empty;
 
     public DateOnly StartDate { get; set; }
 

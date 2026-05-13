@@ -5,4 +5,11 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="BookNow" xml:space="preserve"><value>Book now</value></data>
+  <data name="ValidationDateRangeRequired" xml:space="preserve"><value>Select check-in and check-out dates.</value></data>
+  <data name="ValidationDateUnavailable" xml:space="preserve"><value>The selected date range is unavailable.</value></data>
+  <data name="ValidationEmail" xml:space="preserve"><value>Enter a valid email address.</value></data>
+  <data name="ValidationGuestsRange" xml:space="preserve"><value>The number of guests must be between 1 and 4.</value></data>
+  <data name="ValidationMinimumStay" xml:space="preserve"><value>The minimum stay is 2 nights.</value></data>
+  <data name="ValidationPhone" xml:space="preserve"><value>Enter a valid phone number.</value></data>
+  <data name="ValidationRequired" xml:space="preserve"><value>This field is required.</value></data>
 </root>

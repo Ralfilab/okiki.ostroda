@@ -1,9 +1,21 @@
 @model OkikiOstroda.Web.Models.ReservationRequest
 @using OkikiOstroda.Web.Models
+@using Microsoft.Extensions.Options
+@using System.Text.Json
+@inject IOptions<PricingOptions> PricingOptions
 @{
     ViewData["Title"] = "Cennik i rezerwacja";
     ViewData["Description"] = "Sprawdź dostępność domku Okiki Ostroda i zarezerwuj pobyt przelewem bankowym.";
+    var pricing = PricingOptions.Value;
     var reservations = (IEnumerable<Reservation>)(ViewBag.Reservations ?? Enumerable.Empty<Reservation>());
+    var bookedRanges = reservations
+        .Where(x => x.Status is ReservationStatus.Confirmed or ReservationStatus.Blocked)
+        .Select(x => new
+        {
+            from = x.StartDate.ToString("yyyy-MM-dd"),
+            to = x.EndDate.AddDays(-1).ToString("yyyy-MM-dd")
+        });
+    var bookedRangesJson = JsonSerializer.Serialize(bookedRanges);
 }
 
 <section class="page-hero compact">
@@ -15,36 +27,41 @@
 
 <section class="section">
     <div class="container">
-        <div class="price-grid mb-5">
-            <div><span>Sezon wysoki</span><strong>500 zł / doba</strong><small>minimum 2 noce</small></div>
-            <div><span>Sezon niski</span><strong>400 zł / doba</strong><small>minimum 2 noce</small></div>
-        </div>
-
         <div class="row g-5">
             <div class="col-lg-6">
-                <h2>Dostępne terminy</h2>
-                <div class="availability-list">
-                    @foreach (var reservation in reservations)
-                    {
-                        <div class="booked-row"><strong>@reservation.StartDate.ToString("yyyy-MM-dd") – @reservation.EndDate.ToString("yyyy-MM-dd")</strong><span>@reservation.Status</span></div>
-                    }
-                    @if (!reservations.Any())
-                    {
-                        <p>Brak zablokowanych terminów. Kalendarz jest wolny.</p>
-                    }
+                <div class="availability-calendar-card">
+                    <h2>Wybierz termin</h2>
+                    <p class="text-muted mb-4">Zaznacz datę przyjazdu i wyjazdu. Zajęte terminy są niedostępne.</p>
+                    <div id="availability-calendar" data-booked-ranges='@Html.Raw(bookedRangesJson)'></div>
+                    <div class="availability-legend mt-4">
+                        <span><i class="available"></i>Dostępne</span>
+                        <span><i class="booked"></i>Zajęte</span>
+                    </div>
+                </div>
+                <div class="price-grid price-grid-single mt-4">
+                    <div><strong>500 zł / doba pierwsza i druga, potem 400zl / doba</strong><small>minimum 2 noce;</small></div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <form asp-action="Index" method="post" class="booking-form">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="StartDate" type="hidden" />
+                    <input asp-for="EndDate" type="hidden" />
                     <div class="row g-3">
-                        <div class="col-sm-6"><label asp-for="StartDate" class="form-label">Przyjazd</label><input asp-for="StartDate" type="date" class="form-control" /></div>
-                        <div class="col-sm-6"><label asp-for="EndDate" class="form-label">Wyjazd</label><input asp-for="EndDate" type="date" class="form-control" /></div>
-                        <div class="col-12"><label asp-for="GuestName" class="form-label">Imię i nazwisko</label><input asp-for="GuestName" class="form-control" /></div>
-                        <div class="col-sm-6"><label asp-for="GuestEmail" class="form-label">Email</label><input asp-for="GuestEmail" class="form-control" /></div>
-                        <div class="col-sm-6"><label asp-for="GuestPhone" class="form-label">Telefon</label><input asp-for="GuestPhone" class="form-control" /></div>
-                        <div class="col-12"><label asp-for="Guests" class="form-label">Liczba gości</label><input asp-for="Guests" type="number" min="1" max="4" class="form-control" /></div>
+                        <div class="col-12"><label asp-for="GuestName" class="form-label">Imię i nazwisko</label><input asp-for="GuestName" class="form-control" /><span asp-validation-for="GuestName" class="text-danger"></span></div>
+                        <div class="col-sm-6"><label asp-for="GuestEmail" class="form-label">Email</label><input asp-for="GuestEmail" class="form-control" /><span asp-validation-for="GuestEmail" class="text-danger"></span></div>
+                        <div class="col-sm-6"><label asp-for="GuestPhone" class="form-label">Telefon</label><input asp-for="GuestPhone" class="form-control" /><span asp-validation-for="GuestPhone" class="text-danger"></span></div>
+                        <div class="col-12"><label asp-for="GuestAddress" class="form-label">Adres zamieszkania</label><input asp-for="GuestAddress" class="form-control" /><span asp-validation-for="GuestAddress" class="text-danger"></span></div>
+                        <div class="col-12"><label asp-for="Guests" class="form-label">Liczba gości</label><input asp-for="Guests" type="number" min="1" max="4" class="form-control" /><span asp-validation-for="Guests" class="text-danger"></span></div>
                         <div class="col-12"><label asp-for="Notes" class="form-label">Wiadomość</label><textarea asp-for="Notes" class="form-control" rows="4"></textarea></div>
+                        <div class="col-12">
+                            <div id="price-calculation" class="alert alert-light border mb-0"
+                                 data-base-rate="@pricing.HighSeasonDailyRate.ToString("0")"
+                                 data-discount-rate="@pricing.DiscountedDailyRate.ToString("0")"
+                                 data-discount-starts-after="@pricing.DiscountStartsAfterNights">
+                                Wybierz termin, aby zobaczyć wycenę pobytu.
+                            </div>
+                        </div>
                     </div>
                     <button class="btn btn-dark btn-lg rounded-pill px-5 mt-4" type="submit">Wyślij rezerwację</button>
                 </form>
@@ -52,3 +69,9 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pl.js"></script>
+}

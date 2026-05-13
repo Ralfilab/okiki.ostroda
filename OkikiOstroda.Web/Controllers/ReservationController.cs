@@ -1,18 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using OkikiOstroda.Web.Data;
 using OkikiOstroda.Web.Models;
+using OkikiOstroda.Web.Resources;
 using OkikiOstroda.Web.Services;
 
 namespace OkikiOstroda.Web.Controllers;
 
-public class ReservationController(ApplicationDbContext db, PricingService pricingService, EmailService emailService) : Controller
+public class ReservationController(ApplicationDbContext db, PricingService pricingService, EmailService emailService, IStringLocalizer<SharedResource> localizer) : Controller
 {
     [HttpGet]
     public async Task<IActionResult> Index()
     {
         ViewBag.Reservations = await db.Reservations
-            .Where(x => x.Status != ReservationStatus.Cancelled)
+            .Where(x => x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked)
             .OrderBy(x => x.StartDate)
             .ToListAsync();
         var today = DateOnly.FromDateTime(DateTime.Today);
@@ -27,24 +29,31 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Index(ReservationRequest request)
     {
-        if (!pricingService.IsValidStay(request.StartDate, request.EndDate))
+        if (!request.StartDate.HasValue || !request.EndDate.HasValue)
         {
-            ModelState.AddModelError(string.Empty, "Minimalny pobyt to 2 noce.");
+            ModelState.AddModelError(string.Empty, localizer["ValidationDateRangeRequired"]);
+        }
+        else if (!pricingService.IsValidStay(request.StartDate.Value, request.EndDate.Value))
+        {
+            ModelState.AddModelError(string.Empty, localizer["ValidationMinimumStay"]);
         }
 
-        var overlaps = await db.Reservations.AnyAsync(x =>
-            x.Status != ReservationStatus.Cancelled &&
-            request.StartDate < x.EndDate &&
-            x.StartDate < request.EndDate);
-
-        if (overlaps)
+        if (request.StartDate.HasValue && request.EndDate.HasValue)
         {
-            ModelState.AddModelError(string.Empty, "Wybrany termin jest niedostępny.");
+            var overlaps = await db.Reservations.AnyAsync(x =>
+                (x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked) &&
+                request.StartDate.Value < x.EndDate &&
+                x.StartDate < request.EndDate.Value);
+
+            if (overlaps)
+            {
+                ModelState.AddModelError(string.Empty, localizer["ValidationDateUnavailable"]);
+            }
         }
 
         if (!ModelState.IsValid)
         {
-            ViewBag.Reservations = await db.Reservations.Where(x => x.Status != ReservationStatus.Cancelled).ToListAsync();
+            ViewBag.Reservations = await db.Reservations.Where(x => x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked).ToListAsync();
             return View(request);
         }
 
@@ -53,11 +62,12 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
             GuestName = request.GuestName,
             GuestEmail = request.GuestEmail,
             GuestPhone = request.GuestPhone,
-            Guests = request.Guests,
-            StartDate = request.StartDate,
-            EndDate = request.EndDate,
+            Guests = request.Guests.GetValueOrDefault(),
+            GuestAddress = request.GuestAddress,
+            StartDate = request.StartDate.GetValueOrDefault(),
+            EndDate = request.EndDate.GetValueOrDefault(),
             Notes = request.Notes,
-            TotalPrice = pricingService.CalculateTotal(request.StartDate, request.EndDate),
+            TotalPrice = pricingService.CalculateTotal(request.StartDate.GetValueOrDefault(), request.EndDate.GetValueOrDefault()),
             Status = ReservationStatus.Pending
         };
 
