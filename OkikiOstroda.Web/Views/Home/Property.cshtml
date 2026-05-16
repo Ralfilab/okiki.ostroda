@@ -1,12 +1,12 @@
 @{
-    ViewData["Title"] = "Obiekt";
-    ViewData["Description"] = "Poznaj wyposażenie domku Okiki Ostroda: sypialnia, salon, kuchnia, jacuzzi i klimatyzacja.";
+    ViewData["Title"] = T["PropertyTitle"];
+    ViewData["Description"] = T["PropertyDescription"];
 }
 
 <section class="page-hero compact">
     <div class="container">
-        <p class="eyebrow">Dom</p>
-        <h1>Wygodna przestrzeń dla 4 osób</h1>
+        <p class="eyebrow">@T["NavHome"]</p>
+        <h1>@T["PropertyHeading"]</h1>
     </div>
 </section>
 
@@ -14,17 +14,17 @@
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-5">
-                <h2>Sypialnia i salon</h2>
-                <p>Domek posiada jedną sypialnię oraz salon z rozkładaną sofą. Maksymalnie komfortowo ugościmy 4 osoby. Zapraszamy rodziny z dziećmi w każdym wieku.</p>
+                <h2>@T["PropertyIntroHeading"]</h2>
+                <p>@T["PropertyIntroBody"]</p>
             </div>
             <div class="col-lg-7">
                 <div class="amenity-grid">
-                    <div>Klimatyzacja</div>
-                    <div>Gorąca balia</div>
-                    <div>Czajnik</div>
-                    <div>Ekspres do kawy</div>
-                    <div>W pełni wyposażona kuchnia</div>
-                    <div>Dla dzieci w każdym wieku</div>
+                    <div>@T["AmenityAirConditioning"]</div>
+                    <div>@T["AmenityHotTub"]</div>
+                    <div>@T["AmenityKettle"]</div>
+                    <div>@T["AmenityCoffeeMachine"]</div>
+                    <div>@T["AmenityFullKitchen"]</div>
+                    <div>@T["AmenityForChildren"]</div>
                 </div>
             </div>
         </div>

@@ -4,7 +4,96 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AdminInvalidLogin" xml:space="preserve"><value>Nieprawidłowy login lub hasło.</value></data>
+  <data name="AdminAdd" xml:space="preserve"><value>Dodaj</value></data>
+  <data name="AdminAction" xml:space="preserve"><value>Akcja</value></data>
+  <data name="AdminAdministration" xml:space="preserve"><value>Administracja</value></data>
+  <data name="AdminBlockDateRange" xml:space="preserve"><value>Zablokuj termin</value></data>
+  <data name="AdminFrom" xml:space="preserve"><value>Od</value></data>
+  <data name="AdminGuest" xml:space="preserve"><value>Gość</value></data>
+  <data name="AdminLoginButton" xml:space="preserve"><value>Zaloguj</value></data>
+  <data name="AdminLoginHeading" xml:space="preserve"><value>Logowanie admina</value></data>
+  <data name="AdminLogout" xml:space="preserve"><value>Wyloguj</value></data>
+  <data name="AdminPanel" xml:space="preserve"><value>Panel admina</value></data>
+  <data name="AdminPassword" xml:space="preserve"><value>Hasło</value></data>
+  <data name="AdminSave" xml:space="preserve"><value>Zapisz</value></data>
+  <data name="AdminTo" xml:space="preserve"><value>Do</value></data>
+  <data name="AmenityAirConditioning" xml:space="preserve"><value>Klimatyzacja</value></data>
+  <data name="AmenityCoffeeMachine" xml:space="preserve"><value>Ekspres do kawy</value></data>
+  <data name="AmenityForChildren" xml:space="preserve"><value>Dla dzieci w każdym wieku</value></data>
+  <data name="AmenityFullKitchen" xml:space="preserve"><value>W pełni wyposażona kuchnia</value></data>
+  <data name="AmenityHotTub" xml:space="preserve"><value>Gorąca balia</value></data>
+  <data name="AmenityKettle" xml:space="preserve"><value>Czajnik</value></data>
   <data name="BookNow" xml:space="preserve"><value>Zarezerwuj</value></data>
+  <data name="ContactButton" xml:space="preserve"><value>Przejdź do rezerwacji</value></data>
+  <data name="ContactDescription" xml:space="preserve"><value>Skontaktuj się z Okiki Ostroda i zapytaj o wolne terminy.</value></data>
+  <data name="ContactEmailSoon" xml:space="preserve"><value><a href="mailto:info@okiki.pl">info@okiki.pl</a></value></data>
+  <data name="ContactEyebrow" xml:space="preserve"><value>Napisz lub zadzwoń</value></data>
+  <data name="ContactTitle" xml:space="preserve"><value>Kontakt</value></data>
+  <data name="EmailConfirmationBody" xml:space="preserve"><value>Dziękujemy za rezerwację. Termin: {0:yyyy-MM-dd} - {1:yyyy-MM-dd}. Kwota: {2:0.00} PLN. Numer konta: 52 1020 1127 0000 1602 0391 3597.</value></data>
+  <data name="EmailConfirmationSubject" xml:space="preserve"><value>Okiki Ostroda - rezerwacja #{0}</value></data>
+  <data name="ReservationPricePrompt" xml:space="preserve"><value>Wybierz termin, aby zobaczyć wycenę pobytu.</value></data>
+  <data name="FooterLocation" xml:space="preserve"><value>Boguszewo, 14-140 • domek dla 4 osób</value></data>
+  <data name="FooterReservations" xml:space="preserve"><value>Rezerwacje</value></data>
+  <data name="FooterViewAvailability" xml:space="preserve"><value>Sprawdź dostępność</value></data>
+  <data name="GalleryAlt" xml:space="preserve"><value>Okiki Ostroda galeria</value></data>
+  <data name="GalleryDescription" xml:space="preserve"><value>Galeria zdjęć domku Okiki Ostroda w Boguszewie.</value></data>
+  <data name="GalleryHeading" xml:space="preserve"><value>Zobacz wnętrza i otoczenie</value></data>
+  <data name="GalleryTitle" xml:space="preserve"><value>Galeria</value></data>
+  <data name="HomeDescription" xml:space="preserve"><value>Okiki Ostroda to kameralny domek dla 4 osób z jacuzzi, klimatyzacją i w pełni wyposażoną kuchnią.</value></data>
+  <data name="HomeFeatureGuests" xml:space="preserve"><value>4 osoby</value></data>
+  <data name="HomeFeatureGuestsLabel" xml:space="preserve"><value>Maksymalna liczba gości</value></data>
+  <data name="HomeFeatureHotTubLabel" xml:space="preserve"><value>Gorąca balia / hot tub</value></data>
+  <data name="HomeFeatureKitchen" xml:space="preserve"><value>Kuchnia</value></data>
+  <data name="HomeFeatureKitchenLabel" xml:space="preserve"><value>Pełne wyposażenie</value></data>
+  <data name="HomeHeroButton" xml:space="preserve"><value>Zarezerwuj pobyt</value></data>
+  <data name="HomeHeroEyebrow" xml:space="preserve"><value>Boguszewo • okolice Ostródy</value></data>
+  <data name="HomeHeroHeading" xml:space="preserve"><value>Odpocznij blisko natury w Okiki Ostroda</value></data>
+  <data name="HomeHeroLead" xml:space="preserve"><value>Przytulny domek dla maksymalnie 4 osób z klimatyzacją, gorącą balią i w pełni wyposażoną kuchnią.</value></data>
+  <data name="HomeIntroBody" xml:space="preserve"><value>Działka położona jest w wyjątkowym miejscu: w promieniu kilkuset metrów nie ma żadnych zabudowań, żadnych sąsiadów, żadnego zgiełku. Do dyspozycji mają Państwo prawie 2 hektary terenu, który graniczy z moją własną działką, dzięki czemu przestrzeń jest naprawdę prywatna i spokojna. Dom nie styka się już z drogą główną, więc odgłosy samochodów nie będą Państwu przeszkadzać.</value></data>
+  <data name="HomeIntroEyebrow" xml:space="preserve"><value>Zatrzymaj się na chwilę</value></data>
+  <data name="HomeIntroHeading" xml:space="preserve"><value>Komfortowy wypoczynek dla pary, rodziny lub grupy przyjaciół</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>Domek wypoczynkowy w Boguszewie</value></data>
+  <data name="LayoutOgDescription" xml:space="preserve"><value>Kameralny domek wypoczynkowy w Boguszewie koło Ostródy dla maksymalnie 4 osób.</value></data>
+  <data name="LocationDescription" xml:space="preserve"><value>Okiki Ostroda znajduje się w Boguszewie, 14-140, w spokojnej okolicy blisko natury.</value></data>
+  <data name="LocationHeading" xml:space="preserve"><value>Spokojna lokalizacja blisko Ostródy</value></data>
+  <data name="LocationMapAlt" xml:space="preserve"><value>Mapa dojazdu Okiki Ostroda</value></data>
+  <data name="LocationMapPlaceholder" xml:space="preserve"><value>Miejsce na statyczną mapę dojazdu. Podmień plik {0} na własną grafikę.</value></data>
+  <data name="LocationTitle" xml:space="preserve"><value>Okolica</value></data>
+  <data name="NavHome" xml:space="preserve"><value>Dom</value></data>
+  <data name="Phone" xml:space="preserve"><value>Telefon</value></data>
+  <data name="PropertyDescription" xml:space="preserve"><value>Poznaj wyposażenie domku Okiki Ostroda: sypialnia, salon, kuchnia, jacuzzi i klimatyzacja.</value></data>
+  <data name="PropertyHeading" xml:space="preserve"><value>Wygodna przestrzeń dla 4 osób</value></data>
+  <data name="PropertyIntroBody" xml:space="preserve"><value>Domek posiada jedną sypialnię oraz salon z rozkładaną sofą. Maksymalnie komfortowo ugościmy 4 osoby. Zapraszamy rodziny z dziećmi w każdym wieku.</value></data>
+  <data name="PropertyIntroHeading" xml:space="preserve"><value>Sypialnia i salon</value></data>
+  <data name="PropertyTitle" xml:space="preserve"><value>Obiekt</value></data>
+  <data name="ReservationAccountNumber" xml:space="preserve"><value>Numer konta:</value></data>
+  <data name="ReservationAvailable" xml:space="preserve"><value>Dostępne</value></data>
+  <data name="ReservationBooked" xml:space="preserve"><value>Zajęte</value></data>
+  <data name="ReservationCalendarDescription" xml:space="preserve"><value>Zaznacz datę przyjazdu i wyjazdu. Zajęte terminy są niedostępne.</value></data>
+  <data name="ReservationCalendarHeading" xml:space="preserve"><value>Wybierz termin</value></data>
+  <data name="ReservationConfirmationEmailSent" xml:space="preserve"><value>Wysłaliśmy potwierdzenie na podany adres email.</value></data>
+  <data name="ReservationConfirmationHeading" xml:space="preserve"><value>Dziękujemy za zgłoszenie</value></data>
+  <data name="ReservationConfirmationTitle" xml:space="preserve"><value>Potwierdzenie rezerwacji</value></data>
+  <data name="ReservationDateRange" xml:space="preserve"><value>Termin:</value></data>
+  <data name="ReservationDescription" xml:space="preserve"><value>Sprawdź dostępność domku Okiki Ostroda i zarezerwuj pobyt przelewem bankowym.</value></data>
+  <data name="ReservationEyebrow" xml:space="preserve"><value>Cennik / rezerwacja</value></data>
+  <data name="ReservationGuestAddress" xml:space="preserve"><value>Adres zamieszkania</value></data>
+  <data name="ReservationGuestName" xml:space="preserve"><value>Imię i nazwisko</value></data>
+  <data name="ReservationGuests" xml:space="preserve"><value>Liczba gości</value></data>
+  <data name="ReservationHeading" xml:space="preserve"><value>Sprawdź termin i zarezerwuj pobyt</value></data>
+  <data name="ReservationMessage" xml:space="preserve"><value>Wiadomość</value></data>
+  <data name="ReservationNumber" xml:space="preserve"><value>Numer rezerwacji:</value></data>
+  <data name="ReservationPaymentDetails" xml:space="preserve"><value>Dane do przelewu</value></data>
+  <data name="ReservationPrice" xml:space="preserve"><value>Kwota:</value></data>
+  <data name="ReservationPriceCurrencySuffix" xml:space="preserve"><value>zł</value></data>
+  <data name="ReservationPriceFirstNights" xml:space="preserve"><value>500 zł pierwsza i druga doba</value></data>
+  <data name="ReservationPriceFromThirdNight" xml:space="preserve"><value>400 zł od trzeciej doby</value></data>
+  <data name="ReservationPriceMinimumStay" xml:space="preserve"><value>minimum 2 noce;</value></data>
+  <data name="ReservationSubmit" xml:space="preserve"><value>Wyślij rezerwację</value></data>
+  <data name="ReservationTitle" xml:space="preserve"><value>Cennik i rezerwacja</value></data>
+  <data name="ReservationTransferTitle" xml:space="preserve"><value>Tytuł przelewu:</value></data>
+  <data name="ReservationTransferTitleValue" xml:space="preserve"><value>Rezerwacja {0} - {1}</value></data>
   <data name="ValidationDateRangeRequired" xml:space="preserve"><value>Wybierz datę przyjazdu i wyjazdu.</value></data>
   <data name="ValidationDateUnavailable" xml:space="preserve"><value>Wybrany termin jest niedostępny.</value></data>
   <data name="ValidationEmail" xml:space="preserve"><value>Podaj prawidłowy adres email.</value></data>

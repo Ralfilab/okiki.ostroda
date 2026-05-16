@@ -1,4 +1,4 @@
-namespace OkikiOstroda.Web.Resources;
+namespace OkikiOstroda.Web;
 
 public class SharedResource
 {

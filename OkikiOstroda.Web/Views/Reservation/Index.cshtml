@@ -4,8 +4,8 @@
 @using System.Text.Json
 @inject IOptions<PricingOptions> PricingOptions
 @{
-    ViewData["Title"] = "Cennik i rezerwacja";
-    ViewData["Description"] = "Sprawdź dostępność domku Okiki Ostroda i zarezerwuj pobyt przelewem bankowym.";
+    ViewData["Title"] = T["ReservationTitle"];
+    ViewData["Description"] = T["ReservationDescription"];
     var pricing = PricingOptions.Value;
     var reservations = (IEnumerable<Reservation>)(ViewBag.Reservations ?? Enumerable.Empty<Reservation>());
     var bookedRanges = reservations
@@ -20,8 +20,8 @@
 
 <section class="page-hero compact">
     <div class="container">
-        <p class="eyebrow">Cennik / rezerwacja</p>
-        <h1>Sprawdź termin i zarezerwuj pobyt</h1>
+        <p class="eyebrow">@T["ReservationEyebrow"]</p>
+        <h1>@T["ReservationHeading"]</h1>
     </div>
 </section>
 
@@ -30,16 +30,16 @@
         <div class="row g-5">
             <div class="col-lg-6">
                 <div class="availability-calendar-card">
-                    <h2>Wybierz termin</h2>
-                    <p class="text-muted mb-4">Zaznacz datę przyjazdu i wyjazdu. Zajęte terminy są niedostępne.</p>
+                    <h2>@T["ReservationCalendarHeading"]</h2>
+                    <p class="text-muted mb-4">@T["ReservationCalendarDescription"]</p>
                     <div id="availability-calendar" data-booked-ranges='@Html.Raw(bookedRangesJson)'></div>
                     <div class="availability-legend mt-4">
-                        <span><i class="available"></i>Dostępne</span>
-                        <span><i class="booked"></i>Zajęte</span>
+                        <span><i class="available"></i>@T["ReservationAvailable"]</span>
+                        <span><i class="booked"></i>@T["ReservationBooked"]</span>
                     </div>
                 </div>
                 <div class="price-grid price-grid-single mt-4">
-                    <div><strong>500 zł pierwsza i druga doba</strong><span><strong>400 zł od trzeciej doby</strong></span><small>minimum 2 noce;</small></div>
+                    <div><strong>@T["ReservationPriceFirstNights"]</strong><span><strong>@T["ReservationPriceFromThirdNight"]</strong></span><small>@T["ReservationPriceMinimumStay"]</small></div>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -48,22 +48,24 @@
                     <input asp-for="StartDate" type="hidden" />
                     <input asp-for="EndDate" type="hidden" />
                     <div class="row g-3">
-                        <div class="col-12"><label asp-for="GuestName" class="form-label">Imię i nazwisko</label><input asp-for="GuestName" class="form-control" /><span asp-validation-for="GuestName" class="text-danger"></span></div>
+                        <div class="col-12"><label asp-for="GuestName" class="form-label">@T["ReservationGuestName"]</label><input asp-for="GuestName" class="form-control" /><span asp-validation-for="GuestName" class="text-danger"></span></div>
                         <div class="col-sm-6"><label asp-for="GuestEmail" class="form-label">Email</label><input asp-for="GuestEmail" class="form-control" /><span asp-validation-for="GuestEmail" class="text-danger"></span></div>
-                        <div class="col-sm-6"><label asp-for="GuestPhone" class="form-label">Telefon</label><input asp-for="GuestPhone" class="form-control" /><span asp-validation-for="GuestPhone" class="text-danger"></span></div>
-                        <div class="col-12"><label asp-for="GuestAddress" class="form-label">Adres zamieszkania</label><input asp-for="GuestAddress" class="form-control" /><span asp-validation-for="GuestAddress" class="text-danger"></span></div>
-                        <div class="col-12"><label asp-for="Guests" class="form-label">Liczba gości</label><input asp-for="Guests" type="number" min="1" max="4" class="form-control" /><span asp-validation-for="Guests" class="text-danger"></span></div>
-                        <div class="col-12"><label asp-for="Notes" class="form-label">Wiadomość</label><textarea asp-for="Notes" class="form-control" rows="4"></textarea></div>
+                        <div class="col-sm-6"><label asp-for="GuestPhone" class="form-label">@T["Phone"]</label><input asp-for="GuestPhone" class="form-control" /><span asp-validation-for="GuestPhone" class="text-danger"></span></div>
+                        <div class="col-12"><label asp-for="GuestAddress" class="form-label">@T["ReservationGuestAddress"]</label><input asp-for="GuestAddress" class="form-control" /><span asp-validation-for="GuestAddress" class="text-danger"></span></div>
+                        <div class="col-12"><label asp-for="Guests" class="form-label">@T["ReservationGuests"]</label><input asp-for="Guests" type="number" min="1" max="4" class="form-control" /><span asp-validation-for="Guests" class="text-danger"></span></div>
+                        <div class="col-12"><label asp-for="Notes" class="form-label">@T["ReservationMessage"]</label><textarea asp-for="Notes" class="form-control" rows="4"></textarea></div>
                         <div class="col-12">
                             <div id="price-calculation" class="alert alert-light border mb-0"
                                  data-base-rate="@pricing.HighSeasonDailyRate.ToString("0")"
                                  data-discount-rate="@pricing.DiscountedDailyRate.ToString("0")"
-                                 data-discount-starts-after="@pricing.DiscountStartsAfterNights">
-                                Wybierz termin, aby zobaczyć wycenę pobytu.
+                                 data-discount-starts-after="@pricing.DiscountStartsAfterNights"
+                                 data-empty-message="@T["ReservationPricePrompt"]"
+                                 data-currency-suffix="@T["ReservationPriceCurrencySuffix"]">
+                                @T["ReservationPricePrompt"]
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-dark btn-lg rounded-pill px-5 mt-4" type="submit">Wyślij rezerwację</button>
+                    <button class="btn btn-dark btn-lg rounded-pill px-5 mt-4" type="submit">@T["ReservationSubmit"]</button>
                 </form>
             </div>
         </div>

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="@ViewData["Description"]" />
     <meta property="og:title" content="@ViewData["Title"] - Okiki Ostroda" />
-    <meta property="og:description" content="Kameralny domek wypoczynkowy w Boguszewie koło Ostródy dla maksymalnie 4 osób." />
+    <meta property="og:description" content="@T["LayoutOgDescription"]" />
     <title>@ViewData["Title"] - Okiki Ostroda</title>
     <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
     <link rel="alternate icon" href="~/favicon.ico" />
@@ -46,22 +46,22 @@
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="@prefix/">Dom</a>
+                            <a class="nav-link" href="@prefix/">@T["NavHome"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@prefix/Home/Property">Obiekt</a>
+                            <a class="nav-link" href="@prefix/Home/Property">@T["PropertyTitle"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@prefix/Home/Gallery">Galeria</a>
+                            <a class="nav-link" href="@prefix/Home/Gallery">@T["GalleryTitle"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@prefix/Home/Location">Okolica</a>
+                            <a class="nav-link" href="@prefix/Home/Location">@T["LocationTitle"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@prefix/Home/Contact">Kontakt</a>
+                            <a class="nav-link" href="@prefix/Home/Contact">@T["ContactTitle"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-dark rounded-pill px-4" href="@prefix/Reservation">Zarezerwuj</a>
+                            <a class="btn btn-dark rounded-pill px-4" href="@prefix/Reservation">@T["BookNow"]</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link small" href="/">PL</a>
@@ -85,15 +85,15 @@
             <div class="row g-4">
                 <div class="col-md-6">
                     <img class="footer-logo" src="~/images/okiki-logo.svg" alt="Okiki - Your Happy Hideaway" />
-                    <p>Boguszewo, 14-140 • domek dla 4 osób</p>
+                    <p>@T["FooterLocation"]</p>
                 </div>
                 <div class="col-md-3">
-                    <p class="mb-1">Telefon</p>
+                    <p class="mb-1">@T["Phone"]</p>
                     <a href="tel:+48730249084">+48 730 249 084</a>
                 </div>
                 <div class="col-md-3">
-                    <p class="mb-1">Rezerwacje</p>
-                    <a href="@prefix/Reservation">Sprawdź dostępność</a>
+                    <p class="mb-1">@T["FooterReservations"]</p>
+                    <a href="@prefix/Reservation">@T["FooterViewAvailability"]</a>
                 </div>
             </div>
         </div>

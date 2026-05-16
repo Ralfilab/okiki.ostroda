@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using OkikiOstroda.Web.Resources;
 
 namespace OkikiOstroda.Web.Models;
 

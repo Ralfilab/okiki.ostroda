@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const total = updatePriceCalculation();
-        priceCalculation.textContent = total === null ? "Wybierz termin, aby zobaczyć wycenę pobytu." : `${total} zł`;
+        priceCalculation.textContent = total === null ? priceCalculation.dataset.emptyMessage : `${total} ${priceCalculation.dataset.currencySuffix}`;
     };
 
     flatpickr(calendar, {

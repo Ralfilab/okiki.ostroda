@@ -1,15 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Domek wypoczynkowy w Boguszewie";
-    ViewData["Description"] = "Okiki Ostroda to kameralny domek dla 4 osób z jacuzzi, klimatyzacją i w pełni wyposażoną kuchnią.";
+    ViewData["Title"] = T["HomeTitle"];
+    ViewData["Description"] = T["HomeDescription"];
 }
 
 <section class="hero">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
-        <p class="eyebrow">Boguszewo • okolice Ostródy</p>
-        <h1>Odpocznij blisko natury w Okiki Ostroda</h1>
-        <p class="lead">Przytulny domek dla maksymalnie 4 osób z klimatyzacją, gorącą balią i w pełni wyposażoną kuchnią.</p>
-        <a class="btn btn-light btn-lg rounded-pill px-5" asp-controller="Reservation" asp-action="Index">Zarezerwuj pobyt</a>
+        <p class="eyebrow">@T["HomeHeroEyebrow"]</p>
+        <h1>@T["HomeHeroHeading"]</h1>
+        <p class="lead">@T["HomeHeroLead"]</p>
+        <a class="btn btn-light btn-lg rounded-pill px-5" asp-controller="Reservation" asp-action="Index">@T["HomeHeroButton"]</a>
     </div>
 </section>
 
@@ -17,18 +17,18 @@
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <p class="eyebrow">Zatrzymaj się na chwilę</p>
-                <h2>Komfortowy wypoczynek dla pary, rodziny lub grupy przyjaciół</h2>
+                <p class="eyebrow">@T["HomeIntroEyebrow"]</p>
+                <h2>@T["HomeIntroHeading"]</h2>
             </div>
             <div class="col-lg-6">
-                <p>Okiki Ostroda to spokojna przestrzeń w Boguszewie, przygotowana z myślą o gościach, którzy chcą zwolnić tempo. Do dyspozycji jest sypialnia, salon z rozkładaną sofą, kuchnia oraz udogodnienia dla rodzin z dziećmi w każdym wieku.</p>
+                <p>@T["HomeIntroBody"]</p>
             </div>
         </div>
         <div class="feature-grid mt-5">
-            <div><strong>4 osoby</strong><span>Maksymalna liczba gości</span></div>
-            <div><strong>Jacuzzi</strong><span>Gorąca balia / hot tub</span></div>
-            <div><strong>AC</strong><span>Klimatyzacja</span></div>
-            <div><strong>Kuchnia</strong><span>Pełne wyposażenie</span></div>
+            <div><strong>@T["HomeFeatureGuests"]</strong><span>@T["HomeFeatureGuestsLabel"]</span></div>
+            <div><strong>Jacuzzi</strong><span>@T["HomeFeatureHotTubLabel"]</span></div>
+            <div><strong>AC</strong><span>@T["AmenityAirConditioning"]</span></div>
+            <div><strong>@T["HomeFeatureKitchen"]</strong><span>@T["HomeFeatureKitchenLabel"]</span></div>
         </div>
     </div>
 </section>

@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using OkikiOstroda.Web.Data;
 using OkikiOstroda.Web.Models;
-using OkikiOstroda.Web.Resources;
 using OkikiOstroda.Web.Services;
 
 namespace OkikiOstroda.Web.Controllers;

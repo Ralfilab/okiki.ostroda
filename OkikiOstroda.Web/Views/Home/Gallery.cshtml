@@ -1,6 +1,6 @@
 @{
-    ViewData["Title"] = "Galeria";
-    ViewData["Description"] = "Galeria zdjęć domku Okiki Ostroda w Boguszewie.";
+    ViewData["Title"] = T["GalleryTitle"];
+    ViewData["Description"] = T["GalleryDescription"];
     var images = Enumerable.Range(6623, 71)
         .Where(x => x is not 6626 and not 6640 and not 6642 and not 6643 and not 6661 and not 6678 and not 6679 and not 6680 and not 6684 and not 6688 and not 6692)
         .Select(x => $"IMG_{x}.JPEG");
@@ -8,8 +8,8 @@
 
 <section class="page-hero compact">
     <div class="container">
-        <p class="eyebrow">Galeria</p>
-        <h1>Zobacz wnętrza i otoczenie</h1>
+        <p class="eyebrow">@T["GalleryTitle"]</p>
+        <h1>@T["GalleryHeading"]</h1>
     </div>
 </section>
 
@@ -18,7 +18,7 @@
         <div class="gallery-grid">
             @foreach (var image in images)
             {
-                <a href="~/images/@image" target="_blank"><img src="~/images/@image" alt="Okiki Ostroda galeria" loading="lazy" /></a>
+                <a href="~/images/@image" target="_blank"><img src="~/images/@image" alt="@T["GalleryAlt"]" loading="lazy" /></a>
             }
         </div>
     </div>

@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using OkikiOstroda.Web.Models;
 using System.Net;
@@ -5,7 +6,7 @@ using System.Net.Mail;
 
 namespace OkikiOstroda.Web.Services;
 
-public class EmailService(IOptions<SmtpOptions> options, ILogger<EmailService> logger)
+public class EmailService(IOptions<SmtpOptions> options, ILogger<EmailService> logger, IStringLocalizer<SharedResource> localizer)
 {
     private readonly SmtpOptions _options = options.Value;
 
@@ -20,8 +21,8 @@ public class EmailService(IOptions<SmtpOptions> options, ILogger<EmailService> l
         using var message = new MailMessage
         {
             From = new MailAddress(_options.FromEmail, _options.FromName),
-            Subject = $"Okiki Ostroda - rezerwacja #{reservation.Id}",
-            Body = $"Dziękujemy za rezerwację. Termin: {reservation.StartDate:yyyy-MM-dd} - {reservation.EndDate:yyyy-MM-dd}. Kwota: {reservation.TotalPrice:0.00} PLN. Numer konta: 52 1020 1127 0000 1602 0391 3597.",
+            Subject = localizer["EmailConfirmationSubject", reservation.Id],
+            Body = localizer["EmailConfirmationBody", reservation.StartDate, reservation.EndDate, reservation.TotalPrice],
             IsBodyHtml = false
         };
         message.To.Add(reservation.GuestEmail);

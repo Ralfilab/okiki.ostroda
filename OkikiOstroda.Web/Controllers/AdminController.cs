@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using OkikiOstroda.Web.Data;
 using OkikiOstroda.Web.Models;
@@ -11,7 +12,7 @@ using OkikiOstroda.Web.Services;
 
 namespace OkikiOstroda.Web.Controllers;
 
-public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions> adminOptions, PricingService pricingService) : Controller
+public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions> adminOptions, PricingService pricingService, IStringLocalizer<SharedResource> localizer) : Controller
 {
     [HttpGet]
     public IActionResult Login()
@@ -26,7 +27,7 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
         var options = adminOptions.Value;
         if (userName != options.UserName || password != options.Password)
         {
-            ModelState.AddModelError(string.Empty, "Nieprawidłowy login lub hasło.");
+            ModelState.AddModelError(string.Empty, localizer["AdminInvalidLogin"]);
             return View();
         }
 

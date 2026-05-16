@@ -1,17 +1,17 @@
 @{
-    ViewData["Title"] = "Panel admina";
+    ViewData["Title"] = T["AdminPanel"];
 }
 
 <section class="section top-offset">
     <div class="container narrow">
         <form method="post" class="booking-form">
-            <h1>Logowanie admina</h1>
+            <h1>@T["AdminLoginHeading"]</h1>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <label class="form-label">Login</label>
             <input name="userName" class="form-control mb-3" />
-            <label class="form-label">Hasło</label>
+            <label class="form-label">@T["AdminPassword"]</label>
             <input name="password" type="password" class="form-control mb-3" />
-            <button class="btn btn-dark rounded-pill px-4" type="submit">Zaloguj</button>
+            <button class="btn btn-dark rounded-pill px-4" type="submit">@T["AdminLoginButton"]</button>
         </form>
     </div>
 </section>
