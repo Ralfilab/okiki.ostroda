@@ -218,7 +218,7 @@ Admin pages:
 Bank account displayed after reservation:
 
 ```text
-52 1020 1127 0000 1602 0391 3597
+93 1020 1127 0000 1902 0331 4416
 ```
 
 Transfer title format:

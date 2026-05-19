@@ -30,7 +30,7 @@
   <data name="ContactEmailSoon" xml:space="preserve"><value><a href="mailto:info@okiki.pl">info@okiki.pl</a></value></data>
   <data name="ContactEyebrow" xml:space="preserve"><value>Napisz lub zadzwoń</value></data>
   <data name="ContactTitle" xml:space="preserve"><value>Kontakt</value></data>
-  <data name="EmailConfirmationBody" xml:space="preserve"><value>Dziękujemy za rezerwację. Termin: {0:yyyy-MM-dd} - {1:yyyy-MM-dd}. Kwota: {2:0.00} PLN. Numer konta: 52 1020 1127 0000 1602 0391 3597.</value></data>
+  <data name="EmailConfirmationBody" xml:space="preserve"><value>Dziękujemy za rezerwację. Termin: {0:yyyy-MM-dd} - {1:yyyy-MM-dd}. Kwota: {2:0.00} PLN. Numer konta: 93 1020 1127 0000 1902 0331 4416.</value></data>
   <data name="EmailConfirmationSubject" xml:space="preserve"><value>Okiki Ostroda - rezerwacja #{0}</value></data>
   <data name="ReservationPricePrompt" xml:space="preserve"><value>Wybierz termin, aby zobaczyć wycenę pobytu.</value></data>
   <data name="FooterLocation" xml:space="preserve"><value>Boguszewo, 14-140 • domek dla 4 osób</value></data>
