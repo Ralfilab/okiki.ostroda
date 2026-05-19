@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const endInput = document.getElementById("EndDate");
     const priceCalculation = document.getElementById("price-calculation");
     const bookedRanges = JSON.parse(calendar.dataset.bookedRanges || "[]");
+    const minReservationDate = new Date();
+    minReservationDate.setHours(0, 0, 0, 0);
+    minReservationDate.setDate(minReservationDate.getDate() + 2);
     const updatePriceCalculation = function () {
         if (!priceCalculation || !startInput || !endInput || !startInput.value || !endInput.value) {
             return null;
@@ -47,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     flatpickr(calendar, {
         mode: "range",
         inline: true,
-        minDate: "today",
+        minDate: minReservationDate,
         dateFormat: "Y-m-d",
         locale: flatpickr.l10ns.pl,
         disable: bookedRanges,
