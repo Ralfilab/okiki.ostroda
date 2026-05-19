@@ -1,9 +1,21 @@
 @{
     ViewData["Title"] = T["GalleryTitle"];
     ViewData["Description"] = T["GalleryDescription"];
-    var images = Enumerable.Range(6623, 71)
-        .Where(x => x is not 6626 and not 6640 and not 6642 and not 6643 and not 6661 and not 6678 and not 6679 and not 6680 and not 6684 and not 6688 and not 6692)
-        .Select(x => $"IMG_{x}.JPEG");
+    var images = new[]
+    {
+        "bedroom_1.jpg",
+        "bedroom_wardrobe.jpg",
+        "bedroom_windows.jpg",
+        "fire_place.jpg",
+        "hot_tub.jpg",
+        "house.jpg",
+        "living_room_router.jpg",
+        "living_room_sunset_view.jpg",
+        "living_room_table.jpg",
+        "patio.jpg",
+        "shower.jpg",
+        "sink.jpg"
+    };
 }
 
 <section class="page-hero compact">
