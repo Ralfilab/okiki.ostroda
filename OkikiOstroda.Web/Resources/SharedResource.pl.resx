@@ -30,7 +30,7 @@
   <data name="ContactEmailSoon" xml:space="preserve"><value><a href="mailto:info@okiki.pl">info@okiki.pl</a></value></data>
   <data name="ContactEyebrow" xml:space="preserve"><value>Napisz lub zadzwoń</value></data>
   <data name="ContactTitle" xml:space="preserve"><value>Kontakt</value></data>
-  <data name="EmailConfirmationBody" xml:space="preserve"><value>Dziękujemy za rezerwację.&#xD;&#xA;&#xD;&#xA;Bardzo się cieszymy, że wybrali Państwo nas jako cel swojego wakacyjnego wypoczynku. Nie zawiedziemy Państwa.&#xD;&#xA;&#xD;&#xA;Termin: {0:yyyy-MM-dd} - {1:yyyy-MM-dd}.&#xD;&#xA;Kwota: {2:0.00} PLN.&#xD;&#xA;&#xD;&#xA;Prosimy o przelanie kwoty na podany numer konta najpóźniej 14 dni przed przyjazdem.&#xD;&#xA;Numer konta: 93 1020 1127 0000 1902 0331 4416.&#xD;&#xA;Miłego dnia życzy wam Okiki.</value></data>
+  <data name="EmailConfirmationBody" xml:space="preserve"><value>Dziękujemy za rezerwację.&#xD;&#xA;&#xD;&#xA;Bardzo się cieszymy, że wybrali Państwo nas jako cel swojego wakacyjnego wypoczynku. Nie zawiedziemy Państwa.&#xD;&#xA;&#xD;&#xA;Termin: {0:yyyy-MM-dd} - {1:yyyy-MM-dd}.&#xD;&#xA;Kwota: {2:0.00} PLN.&#xD;&#xA;&#xD;&#xA;Prosimy o przelanie kwoty na podany numer konta najpóźniej 14 dni przed przyjazdem.&#xD;&#xA;&#xD;&#xA;Numer konta: 93 1020 1127 0000 1902 0331 4416.&#xD;&#xA;&#xD;&#xA;Miłego dnia życzy wam Okiki.</value></data>
   <data name="EmailConfirmationSubject" xml:space="preserve"><value>Okiki Ostroda - rezerwacja #{0}</value></data>
   <data name="ReservationPricePrompt" xml:space="preserve"><value>Wybierz termin, aby zobaczyć wycenę pobytu.</value></data>
   <data name="FooterLocation" xml:space="preserve"><value>Boguszewo, 14-140 • domek dla 4 osób</value></data>
