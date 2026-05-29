@@ -59,7 +59,9 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
             GuestName = "Admin",
             GuestEmail = "ralfilab@hotmail.co.uk",
             GuestPhone = "Admin",
-            GuestAddress = "Admin",
+            GuestAddressStreet = "Admin",
+            GuestAddressTown = "Admin",
+            GuestAddressPostCode = "Admin",
             Guests = 1,
             StartDate = startDate,
             EndDate = endDate,
@@ -79,6 +81,21 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
         if (reservation is not null)
         {
             reservation.Status = status;
+            await db.SaveChangesAsync();
+        }
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var reservation = await db.Reservations.FindAsync(id);
+        if (reservation is not null)
+        {
+            db.Reservations.Remove(reservation);
             await db.SaveChangesAsync();
         }
 

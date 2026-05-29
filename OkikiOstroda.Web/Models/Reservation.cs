@@ -32,8 +32,16 @@ public class Reservation
     public int Guests { get; set; } = 2;
 
     [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]
-    [StringLength(300)]
-    public string GuestAddress { get; set; } = string.Empty;
+    [StringLength(200)]
+    public string GuestAddressStreet { get; set; } = string.Empty;
+
+    [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]
+    [StringLength(200)]
+    public string GuestAddressTown { get; set; } = string.Empty;
+
+    [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]
+    [StringLength(200)]
+    public string GuestAddressPostCode { get; set; } = string.Empty;
 
     public DateOnly StartDate { get; set; }
 

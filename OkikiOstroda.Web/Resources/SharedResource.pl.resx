@@ -18,6 +18,12 @@
   <data name="AdminPassword" xml:space="preserve"><value>Hasło</value></data>
   <data name="AdminSave" xml:space="preserve"><value>Zapisz</value></data>
   <data name="AdminTo" xml:space="preserve"><value>Do</value></data>
+  <data name="AdminAddress" xml:space="preserve"><value>Adres</value></data>
+  <data name="AdminNotes" xml:space="preserve"><value>Uwagi</value></data>
+  <data name="AdminCreatedAt" xml:space="preserve"><value>Data zgłoszenia</value></data>
+  <data name="AdminDelete" xml:space="preserve"><value>Usuń</value></data>
+  <data name="AdminDeleteConfirm" xml:space="preserve"><value>Czy na pewno chcesz usunąć tę rezerwację?</value></data>
+  <data name="AdminGuests" xml:space="preserve"><value>Goście</value></data>
   <data name="AmenityAirConditioning" xml:space="preserve"><value>Klimatyzacja</value></data>
   <data name="AmenityCoffeeMachine" xml:space="preserve"><value>Ekspres do kawy</value></data>
   <data name="AmenityForChildren" xml:space="preserve"><value>Dla dzieci w każdym wieku</value></data>
@@ -78,7 +84,9 @@
   <data name="ReservationDateRange" xml:space="preserve"><value>Termin:</value></data>
   <data name="ReservationDescription" xml:space="preserve"><value>Sprawdź dostępność domku Okiki Ostroda i zarezerwuj pobyt przelewem bankowym.</value></data>
   <data name="ReservationEyebrow" xml:space="preserve"><value>Cennik / rezerwacja</value></data>
-  <data name="ReservationGuestAddress" xml:space="preserve"><value>Adres zamieszkania</value></data>
+  <data name="ReservationGuestAddressStreet" xml:space="preserve"><value>Ulica i numer domu</value></data>
+  <data name="ReservationGuestAddressTown" xml:space="preserve"><value>Miejscowość</value></data>
+  <data name="ReservationGuestAddressPostCode" xml:space="preserve"><value>Kod pocztowy</value></data>
   <data name="ReservationGuestName" xml:space="preserve"><value>Imię i nazwisko</value></data>
   <data name="ReservationGuests" xml:space="preserve"><value>Liczba gości</value></data>
   <data name="ReservationHeading" xml:space="preserve"><value>Sprawdź termin i zarezerwuj pobyt</value></data>

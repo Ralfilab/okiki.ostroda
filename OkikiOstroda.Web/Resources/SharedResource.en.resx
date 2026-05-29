@@ -18,6 +18,10 @@
   <data name="AdminPassword" xml:space="preserve"><value>Password</value></data>
   <data name="AdminSave" xml:space="preserve"><value>Save</value></data>
   <data name="AdminTo" xml:space="preserve"><value>To</value></data>
+  <data name="AdminAddress" xml:space="preserve"><value>Address</value></data>
+  <data name="AdminNotes" xml:space="preserve"><value>Notes</value></data>
+  <data name="AdminCreatedAt" xml:space="preserve"><value>Created</value></data>
+  <data name="AdminGuests" xml:space="preserve"><value>Guests</value></data>
   <data name="AmenityAirConditioning" xml:space="preserve"><value>Air conditioning</value></data>
   <data name="AmenityCoffeeMachine" xml:space="preserve"><value>Coffee machine</value></data>
   <data name="AmenityForChildren" xml:space="preserve"><value>For children of all ages</value></data>
@@ -77,7 +81,9 @@
   <data name="ReservationDateRange" xml:space="preserve"><value>Dates:</value></data>
   <data name="ReservationDescription" xml:space="preserve"><value>Check availability for Okiki Ostroda and book your stay by bank transfer.</value></data>
   <data name="ReservationEyebrow" xml:space="preserve"><value>Pricing / reservation</value></data>
-  <data name="ReservationGuestAddress" xml:space="preserve"><value>Residential address</value></data>
+  <data name="ReservationGuestAddressStreet" xml:space="preserve"><value>Street and house number</value></data>
+  <data name="ReservationGuestAddressTown" xml:space="preserve"><value>Town</value></data>
+  <data name="ReservationGuestAddressPostCode" xml:space="preserve"><value>Post code</value></data>
   <data name="ReservationGuestName" xml:space="preserve"><value>Full name</value></data>
   <data name="ReservationGuests" xml:space="preserve"><value>Number of guests</value></data>
   <data name="ReservationHeading" xml:space="preserve"><value>Check dates and book your stay</value></data>

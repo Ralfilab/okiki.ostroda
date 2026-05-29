@@ -20,22 +20,66 @@
             </div>
         </form>
 
-        <div class="table-responsive">
-            <table class="table align-middle">
-                <thead><tr><th>ID</th><th>@T["AdminGuest"]</th><th>@T["ReservationDateRange"]</th><th>Status</th><th>@T["ReservationPrice"]</th><th>@T["AdminAction"]</th></tr></thead>
-                <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.GuestName<br /><small>@item.GuestEmail @item.GuestPhone</small></td>
-                        <td>@item.StartDate.ToString("yyyy-MM-dd") – @item.EndDate.ToString("yyyy-MM-dd")</td>
-                        <td>@item.Status</td>
-                        <td>@item.TotalPrice.ToString("0.00")</td>
-                        <td>
-                            <form asp-action="SetStatus" method="post" class="d-flex gap-2">
+        @foreach (var item in Model)
+        {
+            var badgeClass = item.Status switch
+            {
+                ReservationStatus.Pending => "admin-badge-pending",
+                ReservationStatus.Confirmed => "admin-badge-confirmed",
+                ReservationStatus.Cancelled => "admin-badge-cancelled",
+                ReservationStatus.Blocked => "admin-badge-blocked",
+                _ => ""
+            };
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <strong>#@item.Id</strong>
+                    <span class="admin-badge @badgeClass">@item.Status</span>
+                </div>
+                <div class="row g-3">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="admin-card-label">@T["AdminGuest"]</div>
+                        <div class="admin-card-value">@item.GuestName</div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="admin-card-label">Email</div>
+                        <div class="admin-card-value">@item.GuestEmail</div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="admin-card-label">@T["Phone"]</div>
+                        <div class="admin-card-value">@item.GuestPhone</div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="admin-card-label">@T["AdminGuests"]</div>
+                        <div class="admin-card-value">@item.Guests</div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="admin-card-label">@T["ReservationDateRange"]</div>
+                        <div class="admin-card-value">@item.StartDate.ToString("yyyy-MM-dd") – @item.EndDate.ToString("yyyy-MM-dd")</div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="admin-card-label">@T["ReservationPrice"]</div>
+                        <div class="admin-card-value">@item.TotalPrice.ToString("0.00") zł</div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="admin-card-label">@T["AdminAddress"]</div>
+                        <div class="admin-card-value">@item.GuestAddressStreet, @item.GuestAddressPostCode @item.GuestAddressTown</div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="admin-card-label">@T["AdminCreatedAt"]</div>
+                        <div class="admin-card-value">@item.CreatedAtUtc.ToString("yyyy-MM-dd HH:mm")</div>
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(item.Notes))
+                    {
+                        <div class="col-12">
+                            <div class="admin-card-label">@T["AdminNotes"]</div>
+                            <div class="admin-card-value">@item.Notes</div>
+                        </div>
+                    }
+                    <div class="col-12">
+                        <div class="d-flex gap-2 align-items-center flex-wrap">
+                            <form asp-action="SetStatus" method="post" class="d-flex gap-2 align-items-center">
                                 <input type="hidden" name="id" value="@item.Id" />
-                                <select name="status" class="form-select form-select-sm">
+                                <select name="status" class="form-select form-select-sm" style="max-width:180px;">
                                     @foreach (var status in Enum.GetValues<ReservationStatus>())
                                     {
                                         <option value="@status" selected="@(item.Status == status)">@status</option>
@@ -43,11 +87,14 @@
                                 </select>
                                 <button class="btn btn-sm btn-outline-dark" type="submit">@T["AdminSave"]</button>
                             </form>
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        </div>
+                            <form asp-action="Delete" method="post" onsubmit="return confirm('@T["AdminDeleteConfirm"] @item.StartDate.ToString("yyyy-MM-dd") – @item.EndDate.ToString("yyyy-MM-dd")');">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button class="btn btn-sm btn-outline-danger" type="submit">@T["AdminDelete"]</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </section>

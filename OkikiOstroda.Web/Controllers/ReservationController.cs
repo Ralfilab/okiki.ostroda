@@ -62,7 +62,9 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
             GuestEmail = request.GuestEmail,
             GuestPhone = request.GuestPhone,
             Guests = request.Guests.GetValueOrDefault(),
-            GuestAddress = request.GuestAddress,
+            GuestAddressStreet = request.GuestAddressStreet,
+            GuestAddressTown = request.GuestAddressTown,
+            GuestAddressPostCode = request.GuestAddressPostCode,
             StartDate = request.StartDate.GetValueOrDefault(),
             EndDate = request.EndDate.GetValueOrDefault(),
             Notes = request.Notes,
@@ -73,6 +75,7 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
         db.Reservations.Add(reservation);
         await db.SaveChangesAsync();
         await emailService.SendReservationConfirmationAsync(reservation);
+        await emailService.SendNewReservationNotificationAsync(reservation);
 
         return RedirectToAction(nameof(Confirmation), new { id = reservation.Id });
     }

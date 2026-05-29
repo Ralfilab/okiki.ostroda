@@ -252,13 +252,6 @@ Website images are served from:
 OkikiOstroda.Web/wwwroot/images/
 ```
 
-Current behavior:
-
-- `main_1.JPEG` is used as the homepage hero image.
-- `main_1.JPEG` to `main_4.JPEG` are copied to web assets and can be used for banners.
-- `IMG_*.JPEG` files are used by the gallery.
-- `static-map.svg` is a placeholder static map image.
-
 To replace the static map, overwrite:
 
 ```text
