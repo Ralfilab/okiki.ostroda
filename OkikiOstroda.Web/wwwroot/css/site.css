@@ -27,7 +27,7 @@ body { font-family:Inter,system-ui,sans-serif; color:var(--ink); background:var(
 .booked-row { grid-template-columns:1fr auto; background:#fffaf2; border-radius:18px; padding:1rem; }
 .availability-calendar-card .flatpickr-calendar { width:100%; background:transparent; box-shadow:none; }
 .availability-calendar-card .flatpickr-rContainer,.availability-calendar-card .flatpickr-days,.availability-calendar-card .dayContainer { width:100%; max-width:none; min-width:0; }
-.availability-calendar-card .flatpickr-day { color:var(--ink); border-radius:12px; }
+.availability-calendar-card .flatpickr-day { color:var(--ink); border-radius:12px; max-width:none; }
 .availability-calendar-card .flatpickr-day:hover,.availability-calendar-card .flatpickr-day:focus { background:var(--sand); border-color:var(--sand); }
 .availability-calendar-card .flatpickr-day.today { border-color:#8d6e43; }
 .availability-calendar-card .flatpickr-day.selected,.availability-calendar-card .flatpickr-day.startRange,.availability-calendar-card .flatpickr-day.endRange { background:var(--ink); border-color:var(--ink); color:white; }

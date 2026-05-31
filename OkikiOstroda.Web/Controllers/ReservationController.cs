@@ -34,7 +34,9 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
         }
         else if (!pricingService.IsValidStay(request.StartDate.Value, request.EndDate.Value))
         {
-            ModelState.AddModelError(string.Empty, localizer["ValidationMinimumStay"]);
+            var isHighPeak = pricingService.IsHighPeakSeason(request.StartDate.Value, request.EndDate.Value);
+            var validationKey = isHighPeak ? "ValidationMinimumStayHighPeak" : "ValidationMinimumStayLowPeak";
+            ModelState.AddModelError(string.Empty, localizer[validationKey]);
         }
 
         if (request.StartDate.HasValue && request.EndDate.HasValue)

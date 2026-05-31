@@ -97,7 +97,8 @@
   <data name="ReservationPriceCurrencySuffix" xml:space="preserve"><value>zł</value></data>
   <data name="ReservationPriceFirstNights" xml:space="preserve"><value>500 zł pierwsza i druga doba</value></data>
   <data name="ReservationPriceFromThirdNight" xml:space="preserve"><value>400 zł od trzeciej doby</value></data>
-  <data name="ReservationPriceMinimumStay" xml:space="preserve"><value>minimum 2 noce;</value></data>
+  <data name="ReservationPriceMinimumStayLowPeak" xml:space="preserve"><value>Poza sezonem: minimum 2 noce</value></data>
+  <data name="ReservationPriceMinimumStayHighPeak" xml:space="preserve"><value>Szczyt sezonu (1 lipca - 31 sierpnia): minimum 4 noce</value></data>
   <data name="ReservationSubmit" xml:space="preserve"><value>Wyślij rezerwację</value></data>
   <data name="ReservationTitle" xml:space="preserve"><value>Cennik i rezerwacja</value></data>
   <data name="ReservationTransferTitle" xml:space="preserve"><value>Tytuł przelewu:</value></data>
@@ -106,7 +107,8 @@
   <data name="ValidationDateUnavailable" xml:space="preserve"><value>Wybrany termin jest niedostępny.</value></data>
   <data name="ValidationEmail" xml:space="preserve"><value>Podaj prawidłowy adres email.</value></data>
   <data name="ValidationGuestsRange" xml:space="preserve"><value>Liczba gości musi być od 1 do 4.</value></data>
-  <data name="ValidationMinimumStay" xml:space="preserve"><value>Minimalny pobyt to 2 noce.</value></data>
+  <data name="ValidationMinimumStayLowPeak" xml:space="preserve"><value>Minimalny pobyt to 2 noce.</value></data>
+  <data name="ValidationMinimumStayHighPeak" xml:space="preserve"><value>Minimalny pobyt w szczycie sezonu (1 lipca - 31 sierpnia) to 4 noce.</value></data>
   <data name="ValidationPhone" xml:space="preserve"><value>Podaj prawidłowy numer telefonu.</value></data>
   <data name="ValidationRequired" xml:space="preserve"><value>To pole jest wymagane.</value></data>
 </root>
