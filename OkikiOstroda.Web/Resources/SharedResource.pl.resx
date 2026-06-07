@@ -23,6 +23,16 @@
   <data name="AdminCreatedAt" xml:space="preserve"><value>Data zgłoszenia</value></data>
   <data name="AdminDelete" xml:space="preserve"><value>Usuń</value></data>
   <data name="AdminDeleteConfirm" xml:space="preserve"><value>Czy na pewno chcesz usunąć tę rezerwację?</value></data>
+  <data name="AdminFilters" xml:space="preserve"><value>Filtry</value></data>
+  <data name="AdminStatus" xml:space="preserve"><value>Status</value></data>
+  <data name="AdminAllStatuses" xml:space="preserve"><value>Wszystkie statusy</value></data>
+  <data name="AdminSearch" xml:space="preserve"><value>Szukaj</value></data>
+  <data name="AdminSearchPlaceholder" xml:space="preserve"><value>Gość, email lub numer rezerwacji</value></data>
+  <data name="AdminShowPast" xml:space="preserve"><value>Pokaż minione</value></data>
+  <data name="AdminApplyFilters" xml:space="preserve"><value>Zastosuj</value></data>
+  <data name="AdminClearFilters" xml:space="preserve"><value>Wyczyść</value></data>
+  <data name="AdminShowingAllBookings" xml:space="preserve"><value>Wyświetlane są wszystkie rezerwacje, także minione.</value></data>
+  <data name="AdminShowingUpcomingBookings" xml:space="preserve"><value>Wyświetlane są tylko bieżące i przyszłe rezerwacje.</value></data>
   <data name="AdminGuests" xml:space="preserve"><value>Goście</value></data>
   <data name="AmenityAirConditioning" xml:space="preserve"><value>Klimatyzacja</value></data>
   <data name="AmenityCoffeeMachine" xml:space="preserve"><value>Ekspres do kawy</value></data>

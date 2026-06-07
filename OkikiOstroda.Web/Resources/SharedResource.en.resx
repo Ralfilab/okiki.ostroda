@@ -21,6 +21,18 @@
   <data name="AdminAddress" xml:space="preserve"><value>Address</value></data>
   <data name="AdminNotes" xml:space="preserve"><value>Notes</value></data>
   <data name="AdminCreatedAt" xml:space="preserve"><value>Created</value></data>
+  <data name="AdminDelete" xml:space="preserve"><value>Delete</value></data>
+  <data name="AdminDeleteConfirm" xml:space="preserve"><value>Are you sure you want to delete this reservation?</value></data>
+  <data name="AdminFilters" xml:space="preserve"><value>Filters</value></data>
+  <data name="AdminStatus" xml:space="preserve"><value>Status</value></data>
+  <data name="AdminAllStatuses" xml:space="preserve"><value>All statuses</value></data>
+  <data name="AdminSearch" xml:space="preserve"><value>Search</value></data>
+  <data name="AdminSearchPlaceholder" xml:space="preserve"><value>Guest, email, or reservation ID</value></data>
+  <data name="AdminShowPast" xml:space="preserve"><value>Show past</value></data>
+  <data name="AdminApplyFilters" xml:space="preserve"><value>Apply</value></data>
+  <data name="AdminClearFilters" xml:space="preserve"><value>Clear</value></data>
+  <data name="AdminShowingAllBookings" xml:space="preserve"><value>Showing all bookings, including past bookings.</value></data>
+  <data name="AdminShowingUpcomingBookings" xml:space="preserve"><value>Showing current and upcoming bookings only.</value></data>
   <data name="AdminGuests" xml:space="preserve"><value>Guests</value></data>
   <data name="AmenityAirConditioning" xml:space="preserve"><value>Air conditioning</value></data>
   <data name="AmenityCoffeeMachine" xml:space="preserve"><value>Coffee machine</value></data>

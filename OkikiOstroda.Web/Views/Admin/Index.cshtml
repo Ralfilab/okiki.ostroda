@@ -2,6 +2,9 @@
 @using OkikiOstroda.Web.Models
 @{
     ViewData["Title"] = T["AdminAdministration"];
+    var showPast = ViewBag.ShowPast as bool? ?? false;
+    var filterStatus = ViewBag.FilterStatus as ReservationStatus?;
+    var search = ViewBag.Search as string ?? string.Empty;
 }
 
 <section class="section top-offset">
@@ -21,6 +24,37 @@
                 <div class="col-md-5"><label class="form-label">@T["AdminTo"]</label><input name="endDate" type="date" class="form-control" required /></div>
                 <div class="col-md-2 d-flex align-items-end"><button class="btn btn-dark w-100" type="submit">@T["AdminAdd"]</button></div>
             </div>
+        </form>
+
+        <form asp-action="Index" method="get" class="booking-form mb-4">
+            <h2>@T["AdminFilters"]</h2>
+            <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                    <label class="form-label" for="filterStatus">@T["AdminStatus"]</label>
+                    <select id="filterStatus" name="filterStatus" class="form-select">
+                        <option value="">@T["AdminAllStatuses"]</option>
+                        @foreach (var status in Enum.GetValues<ReservationStatus>())
+                        {
+                            <option value="@status" selected="@(filterStatus == status)">@status</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="search">@T["AdminSearch"]</label>
+                    <input id="search" name="search" type="search" class="form-control" value="@search" placeholder="@T["AdminSearchPlaceholder"]" />
+                </div>
+                <div class="col-md-2">
+                    <div class="form-check mb-2">
+                        <input id="showPast" name="showPast" type="checkbox" class="form-check-input" value="true" checked="@showPast" />
+                        <label class="form-check-label" for="showPast">@T["AdminShowPast"]</label>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex gap-2">
+                    <button class="btn btn-dark flex-fill" type="submit">@T["AdminApplyFilters"]</button>
+                    <a asp-action="Index" class="btn btn-outline-dark flex-fill">@T["AdminClearFilters"]</a>
+                </div>
+            </div>
+            <div class="form-text mt-2">@(showPast ? T["AdminShowingAllBookings"] : T["AdminShowingUpcomingBookings"])</div>
         </form>
 
         @foreach (var item in Model)
@@ -57,7 +91,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="admin-card-label">@T["ReservationDateRange"]</div>
-                        <div class="admin-card-value">@item.StartDate.ToString("yyyy-MM-dd") – @item.EndDate.ToString("yyyy-MM-dd")</div>
+                        <div class="admin-card-value">@item.StartDate.ToString("dd-MM-yyyy") – @item.EndDate.ToString("dd-MM-yyyy")</div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="admin-card-label">@T["ReservationPrice"]</div>
@@ -69,7 +103,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="admin-card-label">@T["AdminCreatedAt"]</div>
-                        <div class="admin-card-value">@item.CreatedAtUtc.ToString("yyyy-MM-dd HH:mm")</div>
+                        <div class="admin-card-value">@item.CreatedAtUtc.ToString("dd-MM-yyyy HH:mm")</div>
                     </div>
                     @if (!string.IsNullOrWhiteSpace(item.Notes))
                     {
@@ -82,6 +116,9 @@
                         <div class="d-flex gap-2 align-items-center flex-wrap">
                             <form asp-action="SetStatus" method="post" class="d-flex gap-2 align-items-center">
                                 <input type="hidden" name="id" value="@item.Id" />
+                                <input type="hidden" name="showPast" value="@showPast.ToString().ToLowerInvariant()" />
+                                <input type="hidden" name="filterStatus" value="@filterStatus" />
+                                <input type="hidden" name="search" value="@search" />
                                 <select name="status" class="form-select form-select-sm" style="max-width:180px;">
                                     @foreach (var status in Enum.GetValues<ReservationStatus>())
                                     {
@@ -90,8 +127,11 @@
                                 </select>
                                 <button class="btn btn-sm btn-outline-dark" type="submit">@T["AdminSave"]</button>
                             </form>
-                            <form asp-action="Delete" method="post" onsubmit="return confirm('@T["AdminDeleteConfirm"] @item.StartDate.ToString("yyyy-MM-dd") – @item.EndDate.ToString("yyyy-MM-dd")');">
+                            <form asp-action="Delete" method="post" onsubmit="return confirm('@T["AdminDeleteConfirm"] @item.StartDate.ToString("dd-MM-yyyy") – @item.EndDate.ToString("dd-MM-yyyy")');">
                                 <input type="hidden" name="id" value="@item.Id" />
+                                <input type="hidden" name="showPast" value="@showPast.ToString().ToLowerInvariant()" />
+                                <input type="hidden" name="filterStatus" value="@filterStatus" />
+                                <input type="hidden" name="search" value="@search" />
                                 <button class="btn btn-sm btn-outline-danger" type="submit">@T["AdminDelete"]</button>
                             </form>
                         </div>
