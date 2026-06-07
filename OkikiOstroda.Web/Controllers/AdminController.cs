@@ -103,6 +103,53 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
     }
 
     [Authorize]
+    public async Task<IActionResult> Calendars()
+    {
+        var calendars = await db.ExternalCalendars.OrderBy(x => x.Name).ToListAsync();
+        return View(calendars);
+    }
+
+    [Authorize]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddCalendar(string name, string iCalUrl)
+    {
+        if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(iCalUrl))
+        {
+            db.ExternalCalendars.Add(new ExternalCalendar
+            {
+                Name = name,
+                ICalUrl = iCalUrl
+            });
+            await db.SaveChangesAsync();
+        }
+
+        return RedirectToAction(nameof(Calendars));
+    }
+
+    [Authorize]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteCalendar(int id)
+    {
+        var calendar = await db.ExternalCalendars.FindAsync(id);
+        if (calendar is not null)
+        {
+            // Remove all blocked reservations imported from this calendar
+            var source = $"iCal:{calendar.Name}";
+            var importedBlocks = await db.Reservations
+                .Where(x => x.Source == source && x.Status == ReservationStatus.Blocked)
+                .ToListAsync();
+            db.Reservations.RemoveRange(importedBlocks);
+
+            db.ExternalCalendars.Remove(calendar);
+            await db.SaveChangesAsync();
+        }
+
+        return RedirectToAction(nameof(Calendars));
+    }
+
+    [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()

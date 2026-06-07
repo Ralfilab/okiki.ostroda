@@ -8,7 +8,10 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>@T["AdminPanel"]</h1>
-            <form asp-action="Logout" method="post"><button class="btn btn-outline-dark" type="submit">@T["AdminLogout"]</button></form>
+            <div class="d-flex gap-2">
+                <a asp-action="Calendars" class="btn btn-outline-dark">External Calendars</a>
+                <form asp-action="Logout" method="post"><button class="btn btn-outline-dark" type="submit">@T["AdminLogout"]</button></form>
+            </div>
         </div>
 
         <form asp-action="Block" method="post" class="booking-form mb-5">

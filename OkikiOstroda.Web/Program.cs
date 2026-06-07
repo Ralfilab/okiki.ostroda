@@ -38,6 +38,8 @@ builder.Services.AddOptions<OkikiAdminOptions>()
     .ValidateOnStart();
 builder.Services.AddScoped<PricingService>();
 builder.Services.AddScoped<EmailService>();
+builder.Services.AddHostedService<CalendarSyncService>();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

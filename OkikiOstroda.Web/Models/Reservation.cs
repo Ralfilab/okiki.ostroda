@@ -55,4 +55,7 @@ public class Reservation
     public string? Notes { get; set; }
 
     public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
+
+    [StringLength(100)]
+    public string? Source { get; set; }
 }

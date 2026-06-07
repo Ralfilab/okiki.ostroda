@@ -1,0 +1,75 @@
+@model IEnumerable<OkikiOstroda.Web.Models.ExternalCalendar>
+@{
+    ViewData["Title"] = "External Calendars";
+}
+
+<section class="section top-offset">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>External Calendars</h1>
+            <a asp-action="Index" class="btn btn-outline-dark">&larr; Back</a>
+        </div>
+
+        <div class="card mb-5">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Add Calendar</h2>
+                <p class="text-muted small">Paste an iCal URL from Booking.com or Airbnb to sync their reservations as blocked dates.</p>
+                <form asp-action="AddCalendar" method="post">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Name</label>
+                            <input name="name" type="text" class="form-control" placeholder="e.g. Booking.com" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">iCal URL</label>
+                            <input name="iCalUrl" type="url" class="form-control" placeholder="https://..." required />
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button class="btn btn-dark w-100" type="submit">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mb-5">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Your Export URL</h2>
+                <p class="text-muted small">Add this URL to Booking.com and Airbnb to export your reservations to them.</p>
+                <code>@($"{Context.Request.Scheme}://{Context.Request.Host}/calendar.ics")</code>
+            </div>
+        </div>
+
+        @if (Model.Any())
+        {
+            <h2 class="h5 mb-3">Connected Calendars</h2>
+            @foreach (var cal in Model)
+            {
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <strong>@cal.Name</strong>
+                        @if (cal.LastSyncUtc.HasValue)
+                        {
+                            <span class="text-muted small">Last sync: @cal.LastSyncUtc.Value.ToString("yyyy-MM-dd HH:mm") UTC</span>
+                        }
+                        else
+                        {
+                            <span class="text-muted small">Not synced yet</span>
+                        }
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-break small">@cal.ICalUrl</span>
+                        <form asp-action="DeleteCalendar" method="post" class="ms-3">
+                            <input type="hidden" name="id" value="@cal.Id" />
+                            <button class="btn btn-sm btn-outline-danger" type="submit" onclick="return confirm('Remove this calendar and all its imported blocks?');">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No external calendars configured yet.</p>
+        }
+    </div>
+</section>
