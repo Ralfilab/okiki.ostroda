@@ -23,7 +23,7 @@ public class ReservationRequest
     public string GuestPhone { get; set; } = string.Empty;
 
     [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]
-    [Range(1, 4, ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationGuestsRange")]
+    [Range(1, 2, ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationGuestsRange")]
     public int? Guests { get; set; } = 2;
 
     [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "ValidationRequired")]

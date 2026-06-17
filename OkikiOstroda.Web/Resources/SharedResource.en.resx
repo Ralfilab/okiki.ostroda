@@ -48,15 +48,15 @@
   <data name="ContactTitle" xml:space="preserve"><value>Contact</value></data>
   <data name="EmailConfirmationBody" xml:space="preserve"><value>Thank you for your reservation. Dates: {0:yyyy-MM-dd} - {1:yyyy-MM-dd}. Amount: {2:0.00} PLN. Account number: 93 1020 1127 0000 1902 0331 4416.</value></data>
   <data name="EmailConfirmationSubject" xml:space="preserve"><value>Okiki Ostroda - reservation #{0}</value></data>
-  <data name="FooterLocation" xml:space="preserve"><value>Boguszewo, 14-140 • cottage for 4 guests</value></data>
+  <data name="FooterLocation" xml:space="preserve"><value>Boguszewo, 14-140 • cottage for 2 guests</value></data>
   <data name="FooterReservations" xml:space="preserve"><value>Reservations</value></data>
   <data name="FooterViewAvailability" xml:space="preserve"><value>Check availability</value></data>
   <data name="GalleryAlt" xml:space="preserve"><value>Okiki Ostroda gallery</value></data>
   <data name="GalleryDescription" xml:space="preserve"><value>Photo gallery of the Okiki Ostroda cottage in Boguszewo.</value></data>
   <data name="GalleryHeading" xml:space="preserve"><value>See the interiors and surroundings</value></data>
   <data name="GalleryTitle" xml:space="preserve"><value>Gallery</value></data>
-  <data name="HomeDescription" xml:space="preserve"><value>Okiki Ostroda is an intimate cottage for 4 guests with a hot tub, air conditioning, and a fully equipped kitchen.</value></data>
-  <data name="HomeFeatureGuests" xml:space="preserve"><value>4 guests</value></data>
+  <data name="HomeDescription" xml:space="preserve"><value>Okiki Ostroda is an intimate cottage for 2 guests with a hot tub, air conditioning, and a fully equipped kitchen.</value></data>
+  <data name="HomeFeatureGuests" xml:space="preserve"><value>2 guests</value></data>
   <data name="HomeFeatureGuestsLabel" xml:space="preserve"><value>Maximum number of guests</value></data>
   <data name="HomeFeatureHotTubLabel" xml:space="preserve"><value>Hot tub</value></data>
   <data name="HomeFeatureKitchen" xml:space="preserve"><value>Kitchen</value></data>
@@ -64,12 +64,12 @@
   <data name="HomeHeroButton" xml:space="preserve"><value>Book your stay</value></data>
   <data name="HomeHeroEyebrow" xml:space="preserve"><value>Boguszewo • near Ostróda</value></data>
   <data name="HomeHeroHeading" xml:space="preserve"><value>Rest close to nature at Okiki Ostroda</value></data>
-  <data name="HomeHeroLead" xml:space="preserve"><value>A cozy cottage for up to 4 guests with air conditioning, a hot tub, and a fully equipped kitchen.</value></data>
+  <data name="HomeHeroLead" xml:space="preserve"><value>A cozy cottage for up to 2 guests with air conditioning, a hot tub, and a fully equipped kitchen.</value></data>
   <data name="HomeIntroBody" xml:space="preserve"><value>Okiki Ostroda is a peaceful space in Boguszewo, prepared for guests who want to slow down. There is a bedroom, a living room with a sofa bed, a kitchen, and amenities for families with children of all ages.</value></data>
   <data name="HomeIntroEyebrow" xml:space="preserve"><value>Pause for a moment</value></data>
   <data name="HomeIntroHeading" xml:space="preserve"><value>Comfortable rest for a couple, family, or group of friends</value></data>
   <data name="HomeTitle" xml:space="preserve"><value>Holiday cottage in Boguszewo</value></data>
-  <data name="LayoutOgDescription" xml:space="preserve"><value>An intimate holiday cottage in Boguszewo near Ostróda for up to 4 guests.</value></data>
+  <data name="LayoutOgDescription" xml:space="preserve"><value>An intimate holiday cottage in Boguszewo near Ostróda for up to 2 guests.</value></data>
   <data name="LocationDescription" xml:space="preserve"><value>Okiki Ostroda is located in Boguszewo, 14-140, in a peaceful area close to nature.</value></data>
   <data name="LocationHeading" xml:space="preserve"><value>A peaceful location near Ostróda</value></data>
   <data name="LocationMapAlt" xml:space="preserve"><value>Directions map for Okiki Ostroda</value></data>
@@ -78,8 +78,8 @@
   <data name="NavHome" xml:space="preserve"><value>Home</value></data>
   <data name="Phone" xml:space="preserve"><value>Phone</value></data>
   <data name="PropertyDescription" xml:space="preserve"><value>Discover the Okiki Ostroda cottage amenities: bedroom, living room, kitchen, hot tub, and air conditioning.</value></data>
-  <data name="PropertyHeading" xml:space="preserve"><value>A comfortable space for 4 guests</value></data>
-  <data name="PropertyIntroBody" xml:space="preserve"><value>The cottage has one bedroom and a living room with a sofa bed. We comfortably host up to 4 guests. Families with children of all ages are welcome.</value></data>
+  <data name="PropertyHeading" xml:space="preserve"><value>A comfortable space for 2 guests</value></data>
+  <data name="PropertyIntroBody" xml:space="preserve"><value>The cottage has one bedroom and a living room with a sofa bed. We comfortably host up to 2 guests. Families with children of all ages are welcome.</value></data>
   <data name="PropertyIntroHeading" xml:space="preserve"><value>Bedroom and living room</value></data>
   <data name="PropertyTitle" xml:space="preserve"><value>Property</value></data>
   <data name="ReservationAccountNumber" xml:space="preserve"><value>Account number:</value></data>
@@ -116,7 +116,7 @@
   <data name="ValidationDateRangeRequired" xml:space="preserve"><value>Select check-in and check-out dates.</value></data>
   <data name="ValidationDateUnavailable" xml:space="preserve"><value>The selected date range is unavailable.</value></data>
   <data name="ValidationEmail" xml:space="preserve"><value>Enter a valid email address.</value></data>
-  <data name="ValidationGuestsRange" xml:space="preserve"><value>The number of guests must be between 1 and 4.</value></data>
+  <data name="ValidationGuestsRange" xml:space="preserve"><value>The number of guests must be between 1 and 2.</value></data>
   <data name="ValidationMinimumStayLowPeak" xml:space="preserve"><value>The minimum stay is 2 nights.</value></data>
   <data name="ValidationMinimumStayHighPeak" xml:space="preserve"><value>The minimum stay during high peak season (July 1 - August 31) is 4 nights.</value></data>
   <data name="ValidationPhone" xml:space="preserve"><value>Enter a valid phone number.</value></data>

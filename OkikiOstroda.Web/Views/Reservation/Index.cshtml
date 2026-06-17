@@ -54,7 +54,7 @@
                         <div class="col-12"><label asp-for="GuestAddressStreet" class="form-label">@T["ReservationGuestAddressStreet"]</label><input asp-for="GuestAddressStreet" class="form-control" /><span asp-validation-for="GuestAddressStreet" class="text-danger"></span></div>
                         <div class="col-sm-6"><label asp-for="GuestAddressTown" class="form-label">@T["ReservationGuestAddressTown"]</label><input asp-for="GuestAddressTown" class="form-control" /><span asp-validation-for="GuestAddressTown" class="text-danger"></span></div>
                         <div class="col-sm-6"><label asp-for="GuestAddressPostCode" class="form-label">@T["ReservationGuestAddressPostCode"]</label><input asp-for="GuestAddressPostCode" class="form-control" /><span asp-validation-for="GuestAddressPostCode" class="text-danger"></span></div>
-                        <div class="col-12"><label asp-for="Guests" class="form-label">@T["ReservationGuests"]</label><input asp-for="Guests" type="number" min="1" max="4" class="form-control" /><span asp-validation-for="Guests" class="text-danger"></span></div>
+                        <div class="col-12"><label asp-for="Guests" class="form-label">@T["ReservationGuests"]</label><input asp-for="Guests" type="number" min="1" max="2" class="form-control" /><span asp-validation-for="Guests" class="text-danger"></span></div>
                         <div class="col-12"><label asp-for="Notes" class="form-label">@T["ReservationMessage"]</label><textarea asp-for="Notes" class="form-control" rows="4"></textarea></div>
                         <div class="col-12">
                             <div id="price-calculation" class="alert alert-light border mb-0"
