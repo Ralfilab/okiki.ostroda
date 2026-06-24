@@ -62,8 +62,12 @@ public class CalendarSyncService(IServiceScopeFactory scopeFactory, ILogger<Cale
             .Where(x => x.Source == source && x.Status == ReservationStatus.Blocked)
             .ToListAsync(ct);
 
+        var existingConfirmedOrBlocked = await db.Reservations
+            .Where(x => x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked)
+            .ToListAsync(ct);
+
         var parsedSet = events.Select(e => (e.Start, e.End)).ToHashSet();
-        var existingSet = existingBlocks.Select(r => (r.StartDate, r.EndDate)).ToHashSet();
+        var existingSet = existingConfirmedOrBlocked.Select(r => (r.StartDate, r.EndDate)).ToHashSet();
 
         // Remove blocks that no longer exist in the external calendar
         foreach (var block in existingBlocks)
