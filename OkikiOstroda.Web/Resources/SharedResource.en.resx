@@ -46,7 +46,7 @@
   <data name="ContactEmailSoon" xml:space="preserve"><value>info@okiki.pl</value></data>
   <data name="ContactEyebrow" xml:space="preserve"><value>Write or call</value></data>
   <data name="ContactTitle" xml:space="preserve"><value>Contact</value></data>
-  <data name="EmailConfirmationBody" xml:space="preserve"><value>Thank you for your reservation. Dates: {0:yyyy-MM-dd} - {1:yyyy-MM-dd}. Amount: {2:0.00} PLN. Account number: 93 1020 1127 0000 1902 0331 4416.</value></data>
+  <data name="EmailConfirmationBody" xml:space="preserve"><value>Thank you for your reservation. Dates: {0:yyyy-MM-dd} - {1:yyyy-MM-dd}. Amount: {2:0.00} PLN. Account number: 52 1020 1127 0000 1602 0391 3597.</value></data>
   <data name="EmailConfirmationSubject" xml:space="preserve"><value>Okiki Ostroda - reservation #{0}</value></data>
   <data name="FooterLocation" xml:space="preserve"><value>Boguszewo, 14-140 • cottage for 2 guests</value></data>
   <data name="FooterReservations" xml:space="preserve"><value>Reservations</value></data>
