@@ -19,9 +19,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 36)));
 });
 
+var dataProtectionKeysPath = builder.Configuration["DataProtection:KeysPath"]
+    ?? throw new InvalidOperationException("DataProtection:KeysPath is not configured.");
+var dataProtectionAppName = builder.Configuration["DataProtection:ApplicationName"]
+    ?? throw new InvalidOperationException("DataProtection:ApplicationName is not configured.");
 builder.Services.AddDataProtection()
-    .PersistKeysToFileSystem(new DirectoryInfo(@"C:\DataProtection-Keys"))
-    .SetApplicationName("Okiki");
+    .PersistKeysToFileSystem(new DirectoryInfo(dataProtectionKeysPath))
+    .SetApplicationName(dataProtectionAppName);
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
