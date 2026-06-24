@@ -18,7 +18,7 @@ public class CalendarController(ApplicationDbContext db, IConfiguration configur
         }
 
         var reservations = await db.Reservations
-            .Where(x => x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked)
+            .Where(x => x.Status == ReservationStatus.Pending || x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked)
             .ToListAsync();
 
         var sb = new StringBuilder();
@@ -34,7 +34,7 @@ public class CalendarController(ApplicationDbContext db, IConfiguration configur
             sb.AppendLine($"UID:reservation-{r.Id}@okiki.pl");
             sb.AppendLine($"DTSTART;VALUE=DATE:{r.StartDate:yyyyMMdd}");
             sb.AppendLine($"DTEND;VALUE=DATE:{r.EndDate:yyyyMMdd}");
-            sb.AppendLine($"SUMMARY:{(r.Status == ReservationStatus.Blocked ? "Blocked" : "Reserved")}");
+            sb.AppendLine($"SUMMARY:{r.Status switch { ReservationStatus.Blocked => "Blocked", ReservationStatus.Pending => "Pending", _ => "Reserved" }}");
             sb.AppendLine($"DTSTAMP:{r.CreatedAtUtc:yyyyMMdd}T{r.CreatedAtUtc:HHmmss}Z");
             sb.AppendLine("END:VEVENT");
         }
