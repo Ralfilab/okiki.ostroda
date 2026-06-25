@@ -38,7 +38,7 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
     }
 
     [Authorize]
-    public async Task<IActionResult> Index(bool showPast = false, ReservationStatus? filterStatus = null, string? search = null)
+    public async Task<IActionResult> Index(bool showPast = false, string? search = null)
     {
         var today = DateOnly.FromDateTime(DateTime.Today);
         var query = db.Reservations.AsQueryable();
@@ -48,11 +48,6 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
             query = query.Where(x => x.EndDate >= today);
         }
 
-        if (filterStatus.HasValue)
-        {
-            query = query.Where(x => x.Status == filterStatus.Value);
-        }
-
         if (!string.IsNullOrWhiteSpace(search))
         {
             var trimmedSearch = search.Trim();
@@ -60,7 +55,6 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
         }
 
         ViewBag.ShowPast = showPast;
-        ViewBag.FilterStatus = filterStatus;
         ViewBag.Search = search;
 
         var reservations = await query.OrderBy(x => x.StartDate).ThenByDescending(x => x.CreatedAtUtc).ToListAsync();
@@ -88,8 +82,7 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
             Guests = 1,
             StartDate = startDate,
             EndDate = endDate,
-            Status = ReservationStatus.Blocked,
-            TotalPrice = 0
+            TotalPrice = 0            
         });
         await db.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -98,22 +91,22 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
     [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> SetStatus(int id, ReservationStatus status, bool showPast = false, ReservationStatus? filterStatus = null, string? search = null)
+    public async Task<IActionResult> SetPaid(int id, bool isPaid, bool showPast = false, string? search = null)
     {
         var reservation = await db.Reservations.FindAsync(id);
         if (reservation is not null)
         {
-            reservation.Status = status;
+            reservation.IsPaid = isPaid;
             await db.SaveChangesAsync();
         }
 
-        return RedirectToAction(nameof(Index), new { showPast, filterStatus, search });
+        return RedirectToAction(nameof(Index), new { showPast, search });
     }
 
     [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(int id, bool showPast = false, ReservationStatus? filterStatus = null, string? search = null)
+    public async Task<IActionResult> Delete(int id, bool showPast = false, string? search = null)
     {
         var reservation = await db.Reservations.FindAsync(id);
         if (reservation is not null)
@@ -122,7 +115,7 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
             await db.SaveChangesAsync();
         }
 
-        return RedirectToAction(nameof(Index), new { showPast, filterStatus, search });
+        return RedirectToAction(nameof(Index), new { showPast, search });
     }
 
     [Authorize]
@@ -161,7 +154,7 @@ public class AdminController(ApplicationDbContext db, IOptions<OkikiAdminOptions
             // Remove all blocked reservations imported from this calendar
             var source = $"iCal:{calendar.Name}";
             var importedBlocks = await db.Reservations
-                .Where(x => x.Source == source && x.Status == ReservationStatus.Blocked)
+                .Where(x => x.Source == source)
                 .ToListAsync();
             db.Reservations.RemoveRange(importedBlocks);
 

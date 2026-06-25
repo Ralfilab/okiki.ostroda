@@ -16,7 +16,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         {
             entity.Property(x => x.TotalPrice).HasPrecision(10, 2);
             entity.HasIndex(x => new { x.StartDate, x.EndDate });
-            entity.HasIndex(x => x.Status);
             entity.HasIndex(x => x.Source);
         });
     }

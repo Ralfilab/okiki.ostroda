@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OkikiOstroda.Web.Data;
-using OkikiOstroda.Web.Models;
 using System.Text;
 
 namespace OkikiOstroda.Web.Controllers;
@@ -17,9 +16,7 @@ public class CalendarController(ApplicationDbContext db, IConfiguration configur
             return Unauthorized();
         }
 
-        var reservations = await db.Reservations
-            .Where(x => x.Status == ReservationStatus.Pending || x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked)
-            .ToListAsync();
+        var reservations = await db.Reservations.ToListAsync();
 
         var sb = new StringBuilder();
         sb.AppendLine("BEGIN:VCALENDAR");
@@ -34,7 +31,7 @@ public class CalendarController(ApplicationDbContext db, IConfiguration configur
             sb.AppendLine($"UID:reservation-{r.Id}@okiki.pl");
             sb.AppendLine($"DTSTART;VALUE=DATE:{r.StartDate:yyyyMMdd}");
             sb.AppendLine($"DTEND;VALUE=DATE:{r.EndDate:yyyyMMdd}");
-            sb.AppendLine($"SUMMARY:{r.Status switch { ReservationStatus.Blocked => "Blocked", ReservationStatus.Pending => "Pending", _ => "Reserved" }}");
+            sb.AppendLine($"SUMMARY:Reserved");
             sb.AppendLine($"DTSTAMP:{r.CreatedAtUtc:yyyyMMdd}T{r.CreatedAtUtc:HHmmss}Z");
             sb.AppendLine("END:VEVENT");
         }

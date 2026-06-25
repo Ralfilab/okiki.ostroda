@@ -2,14 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OkikiOstroda.Web.Models;
 
-public enum ReservationStatus
-{
-    Pending = 0,
-    Confirmed = 1,
-    Cancelled = 2,
-    Blocked = 3
-}
-
 public class Reservation
 {
     public int Id { get; set; }
@@ -49,7 +41,7 @@ public class Reservation
 
     public decimal TotalPrice { get; set; }
 
-    public ReservationStatus Status { get; set; } = ReservationStatus.Pending;
+    public bool IsPaid { get; set; }
 
     [StringLength(1000)]
     public string? Notes { get; set; }

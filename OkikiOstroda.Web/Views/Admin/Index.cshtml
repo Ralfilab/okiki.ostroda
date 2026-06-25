@@ -1,9 +1,7 @@
 @model IEnumerable<OkikiOstroda.Web.Models.Reservation>
-@using OkikiOstroda.Web.Models
 @{
     ViewData["Title"] = T["AdminAdministration"];
     var showPast = ViewBag.ShowPast as bool? ?? false;
-    var filterStatus = ViewBag.FilterStatus as ReservationStatus?;
     var search = ViewBag.Search as string ?? string.Empty;
 }
 
@@ -29,17 +27,7 @@
         <form asp-action="Index" method="get" class="booking-form mb-4">
             <h2>@T["AdminFilters"]</h2>
             <div class="row g-3 align-items-end">
-                <div class="col-md-3">
-                    <label class="form-label" for="filterStatus">@T["AdminStatus"]</label>
-                    <select id="filterStatus" name="filterStatus" class="form-select">
-                        <option value="">@T["AdminAllStatuses"]</option>
-                        @foreach (var status in Enum.GetValues<ReservationStatus>())
-                        {
-                            <option value="@status" selected="@(filterStatus == status)">@status</option>
-                        }
-                    </select>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <label class="form-label" for="search">@T["AdminSearch"]</label>
                     <input id="search" name="search" type="search" class="form-control" value="@search" placeholder="@T["AdminSearchPlaceholder"]" />
                 </div>
@@ -49,7 +37,7 @@
                         <label class="form-check-label" for="showPast">@T["AdminShowPast"]</label>
                     </div>
                 </div>
-                <div class="col-md-3 d-flex gap-2">
+                <div class="col-md-5 d-flex gap-2">
                     <button class="btn btn-dark flex-fill" type="submit">@T["AdminApplyFilters"]</button>
                     <a asp-action="Index" class="btn btn-outline-dark flex-fill">@T["AdminClearFilters"]</a>
                 </div>
@@ -59,18 +47,11 @@
 
         @foreach (var item in Model)
         {
-            var badgeClass = item.Status switch
-            {
-                ReservationStatus.Pending => "admin-badge-pending",
-                ReservationStatus.Confirmed => "admin-badge-confirmed",
-                ReservationStatus.Cancelled => "admin-badge-cancelled",
-                ReservationStatus.Blocked => "admin-badge-blocked",
-                _ => ""
-            };
             <div class="admin-card">
                 <div class="admin-card-header">
                     <strong>#@item.Id</strong>
-                    <span class="admin-badge @badgeClass">@item.Status</span>
+                    <span class="admin-badge @(item.IsPaid ? "admin-badge-confirmed" : "admin-badge-pending")">@(item.IsPaid ? "Paid" : "Unpaid")</span>
+                    @if (item.Source != null) { <span class="admin-badge admin-badge-blocked">External</span> }
                 </div>
                 <div class="row g-3">
                     <div class="col-sm-6 col-md-4">
@@ -114,23 +95,18 @@
                     }
                     <div class="col-12">
                         <div class="d-flex gap-2 align-items-center flex-wrap">
-                            <form asp-action="SetStatus" method="post" class="d-flex gap-2 align-items-center">
+                            <form asp-action="SetPaid" method="post" class="d-flex gap-2 align-items-center">
                                 <input type="hidden" name="id" value="@item.Id" />
                                 <input type="hidden" name="showPast" value="@showPast.ToString().ToLowerInvariant()" />
-                                <input type="hidden" name="filterStatus" value="@filterStatus" />
                                 <input type="hidden" name="search" value="@search" />
-                                <select name="status" class="form-select form-select-sm" style="max-width:180px;">
-                                    @foreach (var status in Enum.GetValues<ReservationStatus>())
-                                    {
-                                        <option value="@status" selected="@(item.Status == status)">@status</option>
-                                    }
+                                <select name="isPaid" class="form-select form-select-sm" style="max-width:180px;">
+                                    <option value="false" selected="@(!item.IsPaid)">Unpaid</option>
+                                    <option value="true" selected="@item.IsPaid">Paid</option>
                                 </select>
                                 <button class="btn btn-sm btn-outline-dark" type="submit">@T["AdminSave"]</button>
                             </form>
-                            <form asp-action="Delete" method="post" onsubmit="return confirm('@T["AdminDeleteConfirm"] @item.StartDate.ToString("dd-MM-yyyy") – @item.EndDate.ToString("dd-MM-yyyy")');">
-                                <input type="hidden" name="id" value="@item.Id" />
+                            <form asp-action="Delete" method="post" onsubmit="return confirm('@T["AdminDeleteConfirm"] @item.StartDate.ToString("dd-MM-yyyy") – @item.EndDate.ToString("dd-MM-yyyy")');">                                <input type="hidden" name="id" value="@item.Id" />
                                 <input type="hidden" name="showPast" value="@showPast.ToString().ToLowerInvariant()" />
-                                <input type="hidden" name="filterStatus" value="@filterStatus" />
                                 <input type="hidden" name="search" value="@search" />
                                 <button class="btn btn-sm btn-outline-danger" type="submit">@T["AdminDelete"]</button>
                             </form>

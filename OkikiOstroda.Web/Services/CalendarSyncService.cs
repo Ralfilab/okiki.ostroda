@@ -59,15 +59,13 @@ public class CalendarSyncService(IServiceScopeFactory scopeFactory, ILogger<Cale
 
         var source = $"iCal:{calendar.Name}";
         var existingBlocks = await db.Reservations
-            .Where(x => x.Source == source && x.Status == ReservationStatus.Blocked)
+            .Where(x => x.Source == source)
             .ToListAsync(ct);
 
-        var existingConfirmedOrBlocked = await db.Reservations
-            .Where(x => x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked)
-            .ToListAsync(ct);
+        var allReservations = await db.Reservations.ToListAsync(ct);
 
         var parsedSet = events.Select(e => (e.Start, e.End)).ToHashSet();
-        var existingSet = existingConfirmedOrBlocked.Select(r => (r.StartDate, r.EndDate)).ToHashSet();
+        var existingSet = allReservations.Select(r => (r.StartDate, r.EndDate)).ToHashSet();
 
         // Remove blocks that no longer exist in the external calendar
         foreach (var block in existingBlocks)
@@ -91,10 +89,9 @@ public class CalendarSyncService(IServiceScopeFactory scopeFactory, ILogger<Cale
                     GuestAddressStreet = "-",
                     GuestAddressTown = "-",
                     GuestAddressPostCode = "-",
-                    Guests = 1,
+                    Guests = 2,
                     StartDate = evt.Start,
                     EndDate = evt.End,
-                    Status = ReservationStatus.Blocked,
                     TotalPrice = 0,
                     Source = source,
                     Notes = evt.Summary

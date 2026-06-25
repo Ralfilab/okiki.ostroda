@@ -7,9 +7,8 @@
     ViewData["Title"] = T["ReservationTitle"];
     ViewData["Description"] = T["ReservationDescription"];
     var pricing = PricingOptions.Value;
-    var reservations = (IEnumerable<Reservation>)(ViewBag.Reservations ?? Enumerable.Empty<Reservation>());
+    var reservations = (IEnumerable<dynamic>)(ViewBag.Reservations ?? Enumerable.Empty<object>());
     var bookedRanges = reservations
-        .Where(x => x.Status is ReservationStatus.Confirmed or ReservationStatus.Blocked)
         .Select(x => new
         {
             from = x.StartDate.ToString("yyyy-MM-dd"),

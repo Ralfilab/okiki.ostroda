@@ -8,14 +8,11 @@ using OkikiOstroda.Web.Services;
 namespace OkikiOstroda.Web.Controllers;
 
 public class ReservationController(ApplicationDbContext db, PricingService pricingService, EmailService emailService, IStringLocalizer<SharedResource> localizer) : Controller
-{
+{    
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        ViewBag.Reservations = await db.Reservations
-            .Where(x => x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked)
-            .OrderBy(x => x.StartDate)
-            .ToListAsync();
+        await GetReservationsForViewBag();
         var today = DateOnly.FromDateTime(DateTime.Today);
         return View(new ReservationRequest
         {
@@ -42,7 +39,6 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
         if (request.StartDate.HasValue && request.EndDate.HasValue)
         {
             var overlaps = await db.Reservations.AnyAsync(x =>
-                (x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked) &&
                 request.StartDate.Value < x.EndDate &&
                 x.StartDate < request.EndDate.Value);
 
@@ -54,7 +50,7 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
 
         if (!ModelState.IsValid)
         {
-            ViewBag.Reservations = await db.Reservations.Where(x => x.Status == ReservationStatus.Confirmed || x.Status == ReservationStatus.Blocked).ToListAsync();
+            await GetReservationsForViewBag();
             return View(request);
         }
 
@@ -70,8 +66,7 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
             StartDate = request.StartDate.GetValueOrDefault(),
             EndDate = request.EndDate.GetValueOrDefault(),
             Notes = request.Notes,
-            TotalPrice = pricingService.CalculateTotal(request.StartDate.GetValueOrDefault(), request.EndDate.GetValueOrDefault()),
-            Status = ReservationStatus.Pending
+            TotalPrice = pricingService.CalculateTotal(request.StartDate.GetValueOrDefault(), request.EndDate.GetValueOrDefault())
         };
 
         db.Reservations.Add(reservation);
@@ -92,5 +87,15 @@ public class ReservationController(ApplicationDbContext db, PricingService prici
         }
 
         return View(reservation);
+    }
+
+    private async Task GetReservationsForViewBag()
+    {
+        var today = DateOnly.FromDateTime(DateTime.Today);
+        ViewBag.Reservations = await db.Reservations
+            .Where(x => x.StartDate >= today)
+            .OrderBy(x => x.StartDate)
+            .Select(x => new { x.StartDate, x.EndDate })
+            .ToListAsync();
     }
 }
