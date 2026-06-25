@@ -68,7 +68,7 @@
   <data name="HomeHeroLead" xml:space="preserve"><value>Przytulny domek dla maksymalnie 2 osób z klimatyzacją, gorącą balią i w pełni wyposażoną kuchnią.</value></data>
   <data name="HomeIntroBody" xml:space="preserve"><value>Działka położona jest w wyjątkowym miejscu: w promieniu kilkuset metrów nie ma żadnych zabudowań, żadnych sąsiadów, żadnego zgiełku. Do dyspozycji mają Państwo prawie 2 hektary terenu, który graniczy z moją własną działką, dzięki czemu przestrzeń jest naprawdę prywatna i spokojna. Dom nie styka się już z drogą główną, więc odgłosy samochodów nie będą Państwu przeszkadzać.</value></data>
   <data name="HomeIntroEyebrow" xml:space="preserve"><value>Zatrzymaj się na chwilę</value></data>
-  <data name="HomeIntroHeading" xml:space="preserve"><value>Komfortowy wypoczynek dla pary, rodziny lub grupy przyjaciół</value></data>
+  <data name="HomeIntroHeading" xml:space="preserve"><value>Komfortowy wypoczynek dla pary szukającej spokoju poza miastem, na łonie natury</value></data>
   <data name="HomeTitle" xml:space="preserve"><value>Domek wypoczynkowy w Boguszewie</value></data>
   <data name="LayoutOgDescription" xml:space="preserve"><value>Kameralny domek wypoczynkowy w Boguszewie koło Ostródy dla maksymalnie 2 osób.</value></data>
   <data name="LocationDescription" xml:space="preserve"><value>Okiki Ostroda znajduje się w Boguszewie, 14-140, w spokojnej okolicy blisko natury.</value></data>
@@ -80,7 +80,7 @@
   <data name="Phone" xml:space="preserve"><value>Telefon</value></data>
   <data name="PropertyDescription" xml:space="preserve"><value>Poznaj wyposażenie domku Okiki Ostroda: sypialnia, salon, kuchnia, jacuzzi i klimatyzacja.</value></data>
   <data name="PropertyHeading" xml:space="preserve"><value>Wygodna przestrzeń dla 2 osób</value></data>
-  <data name="PropertyIntroBody" xml:space="preserve"><value>Domek posiada jedną sypialnię oraz salon z rozkładaną sofą. Maksymalnie komfortowo ugościmy 2 osoby. Zapraszamy rodziny z dziećmi w każdym wieku.</value></data>
+  <data name="PropertyIntroBody" xml:space="preserve"><value>Domek posiada jedną sypialnię oraz salon z rozkładaną sofą. Maksymalnie komfortowo ugościmy 2 osoby. Zapraszamy pary szukające spokojnej lokalizacji poza miastem i wypoczynku na łonie natury.</value></data>
   <data name="PropertyIntroHeading" xml:space="preserve"><value>Sypialnia i salon</value></data>
   <data name="PropertyTitle" xml:space="preserve"><value>Obiekt</value></data>
   <data name="ReservationAccountNumber" xml:space="preserve"><value>Numer konta:</value></data>
